@@ -1,0 +1,99 @@
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Home Temps</title>
+  <style type="text/css">
+    body {
+      padding: 0;
+      color: #222;
+      text-shadow: 0 1px 0 white;
+      background-color: #ebebeb;
+      font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+    <table style="width:200px;">
+    <tr>
+        <td style="text-align:right;"><small>Indoor Temp:</small></td>
+        <td style="font-size: 20px;"><span id="Indoor_Temp"></span>F</td>
+    </tr>
+    <tr>
+        <td style="text-align:right;"><small>Indoor Humidity:</small></td>
+        <td style="font-size: 20px;"><span id="Indoor_Humidity"></span>%</td>
+    </tr>    
+    <tr>
+        <td style="text-align:right;"><small>Outdoor Temp:</small></td>
+        <td style="font-size: 20px;"><span id="Outdoor_Temp"></span>F</td>
+    </tr>
+    <tr>
+        <td style="text-align:right;"><small>Outdoor Humidity:</small></td>
+        <td style="font-size: 20px;"><span id="Outdoor_Humidity"></span>%</td>
+    </tr>
+    </table>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>  
+    <script src="js/xivelyjs-1.0.0.min.js"></script>  
+    <script>  
+    $(document).ready(function($)
+    {  
+        xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc" );  
+
+        var feedID    = 1479543148;     // Feed ID   
+  
+        xively.datastream.get ( feedID, "Indoor_Temp", function ( datastream )
+        {  
+            // NOTE: The variable "datastream" will contain all the Datastream information   
+            // as an object. The structure of Datastream objects can be found at:   
+            // https://xively.com/dev/docs/api/quick_reference/api_resource_attributes/#datastream  
+
+            // Display the current value from the datastream  
+            $('#Indoor_Temp').html( datastream["current_value"] );  
+
+            // Getting realtime!   
+            // The function associated with the subscribe method will be executed   
+            // every time there is an update to the datastream  
+            xively.datastream.subscribe( feedID, "Indoor_Temp", function ( event , datastream_updated )
+            {  
+                // Display the current value from the updated datastream  
+                $('#Indoor_Temp').html( datastream_updated["current_value"] );  
+            });  
+
+        });
+
+        xively.datastream.get ( feedID, "Indoor_Humidity", function ( datastream )
+        {  
+            $('#Indoor_Humidity').html( datastream["current_value"] );  
+            xively.datastream.subscribe( feedID, "Indoor_Humidity", function ( event , datastream_updated )
+            {  
+                $('#Indoor_Humidity').html( datastream_updated["current_value"] );  
+            });  
+        });
+        
+         xively.datastream.get ( feedID, "Outdoor_Temp", function ( datastream )
+        {  
+            $('#Outdoor_Temp').html( datastream["current_value"] );  
+            xively.datastream.subscribe( feedID, "Outdoor_Temp", function ( event , datastream_updated )
+            {  
+                $('#Outdoor_Temp').html( datastream_updated["current_value"] );  
+            });  
+        });
+
+        xively.datastream.get ( feedID, "Outdoor_Humidity", function ( datastream )
+        {  
+            $('#Outdoor_Humidity').html( datastream["current_value"] );  
+            xively.datastream.subscribe( feedID, "Outdoor_Humidity", function ( event , datastream_updated )
+            {  
+                $('#Outdoor_Humidity').html( datastream_updated["current_value"] );  
+            });  
+        });
+        
+        // WARNING: Code here will continue executing while we get the datastream data from Xively,   
+        // use the function associated with datastream.get to work with the data   
+        // once the request is complete  
+    });  
+    </script>
+
+</body>
+</html>
