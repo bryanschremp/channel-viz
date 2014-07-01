@@ -3,6 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Home Temps</title>
   <style type="text/css">
+    
     body {
       padding: 0;
       color: white;
@@ -10,15 +11,16 @@
       font-family: "Helvetica Neue", helvetica, arial, sans-serif;
       font-size: 20px;
     }
+    
     .DateTime {
         width: 550px;
         text-align: right;
-        font-size: 45px;
+        font-size: 47px;
         padding: 2px;
     }
 
    .lbl{
-      width: 370px;
+      width: 340px;
       display:inline-block;
       text-align: right;
       font-size: 50px;
@@ -33,7 +35,7 @@
 
    .ValueDiv {
         width: 550px;
-        padding: 2px;
+        padding: 3px;
         border: 2px solid;
         border-radius: 20px;
         background-color: DarkSlateBlue;
@@ -52,7 +54,7 @@
   </style>
 </head>
 <body onload="updateClock(); setInterval('updateClock()', 1000);">
-    <div class="DateTime"><span id="Day"></span> <span id="Date"></span> <span id="CurrentTime"></span></div>
+    <div class="DateTime"><span id="Day"> </span> <span id="Date"> </span> <span id="CurrentTime"> </span></div>
     <div class="ValueDiv">
         <div class="lbl">Indoor<br/>Temp</div>
         <div class="val">&nbsp;<span id="Indoor_Temp"></span>F</div>
