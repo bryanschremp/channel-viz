@@ -13,7 +13,7 @@
     .DateTime {
         width: 550px;
         text-align: right;
-        font-size: 40px;
+        font-size: 45px;
         padding: 2px;
     }
 
@@ -27,7 +27,7 @@
 
    .val{
       display:inline-block;
-      font-size: 70px;
+      font-size: 80px;
       text-shadow: 4px 4px 4px gray;
    }
 
@@ -54,19 +54,19 @@
 <body onload="updateClock(); setInterval('updateClock()', 1000);">
     <div class="DateTime"><span id="Day"></span> <span id="Date"></span> <span id="CurrentTime"></span></div>
     <div class="ValueDiv">
-        <div class="lbl">Indoor Temp</div>
+        <div class="lbl">Indoor<br/>Temp</div>
         <div class="val">&nbsp;<span id="Indoor_Temp"></span>F</div>
     </div>
     <div class="ValueDiv">
-        <div class="lbl">Indoor Humidity</div>
+        <div class="lbl">Indoor<br/>Humidity</div>
         <div class="val">&nbsp;<span id="Indoor_Humidity"></span>%</div>
     </div>
     <div class="ValueDiv">
-        <div class="lbl">Outdoor Temp</div>
+        <div class="lbl">Outdoor<br/>Temp</div>
         <div class="val">&nbsp;<span id="Outdoor_Temp"></span>F</div>
     </div>
     <div class="ValueDiv">
-        <div class="lbl">Outdoor Humidity</div>
+        <div class="lbl">Outdoor<br/>Humidity</div>
         <div class="val">&nbsp;<span id="Outdoor_Humidity"></span>%</div>
     </div>
     <br />
