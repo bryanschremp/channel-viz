@@ -16,7 +16,24 @@
         text-align: right;
         font-size: 47px;
     }
+    
+    #Day {
+        display:inline-block;
+        text-align: right;
+        font-size: 47px;
+    }
 
+    #Date {
+        display:inline-block;
+        text-align: right;
+        font-size: 47px;
+    }
+
+    #CurrentTime {
+        text-align: right;
+        font-size: 47px;
+    }
+    
    .ValueDiv {
         width: 550px;
         padding: 3px;
@@ -61,10 +78,10 @@
 
   </style>
 </head>
-<body onload="updateClock(); setInterval('updateClock()', 1000);">
+<body onload="updateClock(); setInterval('updateClock()', 60000);">
     <div class="DateTime">
-        <span id="Day"> </span> <span id="Date"> </span>
-        <br/><span id="CurrentTime"> </span>
+        <div id="Day"> </div> <div id="Date"> </div>
+        <div id="CurrentTime"> </div>
     </div>
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
@@ -156,11 +173,9 @@
             var currentTime = new Date();
             var currentHours = currentTime.getHours();
             var currentMinutes = currentTime.getMinutes();
-            var currentSeconds = currentTime.getSeconds();
 
             // Pad the minutes and seconds with leading zeros, if required
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-            currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
 
             // Choose either "AM" or "PM" as appropriate
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
@@ -172,7 +187,7 @@
             currentHours = (currentHours == 0) ? 12 : currentHours;
 
             // Compose the string for display
-            var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+            var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
 
             // Update the time display
             document.getElementById("CurrentTime").firstChild.nodeValue = currentTimeString;
