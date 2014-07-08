@@ -119,10 +119,6 @@
 
             var feedID = 1479543148;
 
-            var dt = new Date();
-            document.getElementById("Day").innerHTML = days[dt.getDay()];
-            document.getElementById("Date").innerHTML = dt.toLocaleDateString();
-
             xively.feed.get(feedID, function (feed) {
 
                 $('#Timestamp').html(feed["updated"]);
@@ -172,9 +168,9 @@
         });
 
         function updateClock() {
-            var currentTime = new Date();
-            var currentHours = currentTime.getHours();
-            var currentMinutes = currentTime.getMinutes();
+            var dt = new Date();
+            var currentHours = dt.getHours();
+            var currentMinutes = dt.getMinutes();
 
             // Pad the minutes and seconds with leading zeros, if required
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
@@ -191,6 +187,9 @@
             // Compose the string for display
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
 
+            document.getElementById("Day").innerHTML = days[dt.getDay()];
+            document.getElementById("Date").innerHTML = dt.toLocaleDateString();
+            
             // Update the time display
             document.getElementById("CurrentTime").innerHTML = currentTimeString;
         }
