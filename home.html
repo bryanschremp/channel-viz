@@ -71,20 +71,22 @@
    
    #Updated {       
         display:inline-block;
-        font-size: 28px;
+        font-size: 26px;
     }
    
    #Timestamp {
        display:inline-block;
-       font-size: 28px;
+       font-size: 26px;
    }
 
   </style>
 </head>
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
+
     <div id="DateTimeDiv">
         <div id="Day"> </div> <div id="Date"> </div> <div id="CurrentTime"> </div>
     </div>
+    
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
         <div class="lbl">Temp</div>
@@ -93,6 +95,7 @@
         <div class="lbl">Humidity</div>
         <div class="val">&nbsp;<span id="Indoor_Humidity"> </span>%</div>
     </div>
+    
     <div class="ValueDiv">
         <div class="Zone">Outdoor</div>
         <div class="lbl">Temp</div>
@@ -101,7 +104,7 @@
         <div class="lbl">Humidity</div>
         <div class="val">&nbsp;<span id="Outdoor_Humidity"> </span>%</div>
     </div>
-    <br />
+    
     <br />
     <div id="TimestampDiv">
         <div id="Updated">Updated: </div>
@@ -112,21 +115,19 @@
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
         
-        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-        $(document).ready(function ($) {
-            xively.setKey("Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
-
+        $(document).ready( function ( $ ) {
+            
+            xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
-            xively.feed.get(feedID, function (feed) {
+            xively.feed.get( feedID, function ( feed ) {
 
-                $('#Timestamp').html(feed["updated"]);
+                $( '#Timestamp' ).html( feed["updated"] );
 
-                xively.feed.subscribe(feedID, "updated", function (event, feedUpdated) {
-                    $('#Timestamp').html(feedUpdated["updated"]);
-                });
-            });
+                xively.feed.subscribe( feedID, "updated", function ( event, feedUpdated ) {
+                    $( '#Timestamp' ).html( feedUpdated["updated"] );
+                } );
+            } );
 
             xively.datastream.get(feedID, "Indoor_Temp", function (datastream) {
 
@@ -168,6 +169,7 @@
         });
 
         function updateClock() {
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var dt = new Date();
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();
@@ -191,7 +193,8 @@
             document.getElementById("Date").innerHTML = dt.toLocaleDateString();
             
             // Update the time display
-            document.getElementById("CurrentTime").innerHTML = currentTimeString;
+            // document.getElementById("CurrentTime").innerHTML = currentTimeString;
+            $('#CurrentTime').html(currentTimeString);
         }
     </script>
 </body>
