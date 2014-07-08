@@ -189,8 +189,10 @@
             // Compose the string for display
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
 
-            document.getElementById("Day").innerHTML = days[dt.getDay()];
-            document.getElementById("Date").innerHTML = dt.toLocaleDateString();
+            // document.getElementById("Day").innerHTML = days[dt.getDay()];
+            $('#Day').html(days[dt.getDay()]);
+            // document.getElementById("Date").innerHTML = dt.toLocaleDateString();
+            $('#Date').html(dt.toLocaleDateString());
             
             // Update the time display
             // document.getElementById("CurrentTime").innerHTML = currentTimeString;
