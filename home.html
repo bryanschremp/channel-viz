@@ -2,41 +2,43 @@
 <head>
   <title>Home Temps</title>
   <style type="text/css">
-    
+
     body {
       padding: 0;
       color: white;
       background-color: #000000;
       font-family: "Segoe UI";
     }
-    
+
     #DateDiv {
+        text-align: right;
         width: 550px;
         padding: 2px;
     }
-    
+
     #Day {
-        display:inline-block;
         text-align: right;
         font-size: 47px;
+        display: inline-block;
     }
 
     #Date {
-        display:inline-block;
         text-align: right;
         font-size: 47px;
+        display: inline-block;
     }
-    
+
     #TimeDiv {
+        text-align: right;
         width: 550px;
         padding: 2px;
     }
-    
+
     #CurrentTime {
         text-align: right;
         font-size: 47px;
     }
-    
+
    .ValueDiv {
         width: 550px;
         padding: 3px;
@@ -72,12 +74,12 @@
        width: 550px;
        font-size: 26px;
    }
-   
-   #Updated {       
+
+   #Updated {
         display:inline-block;
         font-size: 26px;
     }
-   
+
    #Timestamp {
        display:inline-block;
        font-size: 26px;
@@ -91,10 +93,10 @@
         <div id="Day"> </div> <div id="Date"> </div>
     </div>
 
-    <div id="TimeDiv">    
+    <div id="TimeDiv">
         <div id="CurrentTime"> </div>
     </div>
-    
+
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
         <div class="lbl">Temp</div>
@@ -103,7 +105,7 @@
         <div class="lbl">Humidity</div>
         <div class="val">&nbsp;<span id="Indoor_Humidity"> </span>%</div>
     </div>
-    
+
     <div class="ValueDiv">
         <div class="Zone">Outdoor</div>
         <div class="lbl">Temp</div>
@@ -112,7 +114,7 @@
         <div class="lbl">Humidity</div>
         <div class="val">&nbsp;<span id="Outdoor_Humidity"> </span>%</div>
     </div>
-    
+
     <br />
     <div id="TimestampDiv">
         <div id="Updated">Updated: </div>
@@ -123,7 +125,7 @@
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
         $(document).ready( function ( $ ) {
-            
+
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
@@ -196,5 +198,4 @@
         }
     </script>
 </body>
-
 </html>
