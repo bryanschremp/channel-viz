@@ -67,6 +67,7 @@
 
    #TimestampDiv {
        width: 550px;
+       font-size: 26px;
    }
    
    #Updated {       
@@ -114,33 +115,20 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
-        
         $(document).ready( function ( $ ) {
             
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
-            xively.feed.get( feedID, function ( feed ) {
-
-                $( '#Timestamp' ).html( feed["updated"] );
-
-                xively.feed.subscribe( feedID, "updated", function ( event, feedUpdated ) {
-                    $( '#Timestamp' ).html( feedUpdated["updated"] );
-                } );
-            } );
-
             xively.datastream.get(feedID, "Indoor_Temp", function (datastream) {
-
                 $('#Indoor_Temp').html(datastream["current_value"]);
 
                 xively.datastream.subscribe(feedID, "Indoor_Temp", function (event, datastream_updated) {
                     $('#Indoor_Temp').html(datastream_updated["current_value"]);
                 });
-
             });
 
             xively.datastream.get(feedID, "Indoor_Humidity", function (datastream) {
-
                 $('#Indoor_Humidity').html(datastream["current_value"]);
 
                 xively.datastream.subscribe(feedID, "Indoor_Humidity", function (event, datastream_updated) {
@@ -149,7 +137,6 @@
             });
 
             xively.datastream.get(feedID, "Outdoor_Temp", function (datastream) {
-
                 $('#Outdoor_Temp').html(datastream["current_value"]);
 
                 xively.datastream.subscribe(feedID, "Outdoor_Temp", function (event, datastream_updated) {
@@ -158,14 +145,21 @@
             });
 
             xively.datastream.get(feedID, "Outdoor_Humidity", function (datastream) {
-
                 $('#Outdoor_Humidity').html(datastream["current_value"]);
 
                 xively.datastream.subscribe(feedID, "Outdoor_Humidity", function (event, datastream_updated) {
                     $('#Outdoor_Humidity').html(datastream_updated["current_value"]);
                 });
             });
+            
+            xively.feed.get( feedID, function ( feed ) {
+                $( '#Timestamp' ).html( feed["updated"] );
 
+                xively.feed.subscribe( feedID, "updated", function ( event, feedUpdated ) {
+                    $( '#Timestamp' ).html( feedUpdated["updated"] );
+                } );
+            } );
+            
         });
 
         function updateClock() {
