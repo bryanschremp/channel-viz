@@ -7,10 +7,10 @@
       padding: 0;
       color: white;
       background-color: #000000;
-      font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+      font-family: "Segoe UI";
     }
     
-    .DateTime {
+    #DateTimeDiv {
         width: 550px;
         padding: 2px;
         text-align: right;
@@ -65,13 +65,16 @@
       text-shadow: 4px 4px 4px black;
    }
 
-   .TimestampDiv {
+   #TimestampDiv {
        width: 550px;
-       text-align: right;
-       font-size: 30px;
    }
-
-   .data {
+   
+   #Updated {       
+        display:inline-block;
+        font-size: 30px;
+    }
+   
+   #Timestamp {
        display:inline-block;
        font-size: 30px;
    }
@@ -79,7 +82,7 @@
   </style>
 </head>
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
-    <div class="DateTime">
+    <div id="DateTimeDiv">
         <div id="Day"> </div> <div id="Date"> </div>
         <div id="CurrentTime"> </div>
     </div>
@@ -101,9 +104,9 @@
     </div>
     <br />
     <br />
-    <div class="TimestampDiv">
-        <div class="data">Updated</div>
-        <div class="data">&nbsp;<span id="Timestamp"> </span></div>
+    <div id="TimestampDiv">
+        <div id="Updated">Updated: </div>
+        <div id="Timestamp"> </div>
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
