@@ -104,7 +104,8 @@
     <br />
     <br />
     <div id="TimestampDiv">
-        <div id="Updated">Updated: </div> <div id="Timestamp"> </div>
+        <div id="Updated">Updated: </div>
+        <div id="Timestamp"> </div>
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -191,7 +192,7 @@
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
 
             // Update the time display
-            document.getElementById("CurrentTime").firstChild.nodeValue = currentTimeString;
+            document.getElementById("CurrentTime").innerHTML = currentTimeString;
         }
     </script>
 </body>
