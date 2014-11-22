@@ -8,31 +8,30 @@
       color: white;
       background-color: #000000;
       font-family: "Segoe UI";
-      /* border: 1px solid; */
     }
 
     .DateDiv {
         width: 550px;
         padding: 3px;
-        font-size: 47px;
+       font-size: 50px;
     }
 
     .WeekDay {
         width: 220px;
-        display:inline-block;
+        display: inline-block;
         border: 1px solid;
     }
 
     .Date {
         width: 220px;
-        display:inline-block;
+        display: inline-block;
         border: 1px solid;
     }
 
     .CurrentTime {
         text-align: right;
         width: 550px;
-        font-size: 47px;
+        font-size: 50px;
         border: 1px solid;
     }
 
@@ -105,10 +104,10 @@
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
 
     <div class="DateDiv">
-        <div class="WeekDay"><span id="WeekDay"> </span></div><div id="Date"><span id="Date"> </span></div>
+        <div class="WeekDay">W<span id="WeekDay"> </span></div> <div id="Date">D<span id="Date"> </span></div>
     </div>
 
-    <div class="CurrentTime"><span id="CurrentTime"> </span></div>
+    <div class="CurrentTime">T<span id="CurrentTime"> </span></div>
 
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
