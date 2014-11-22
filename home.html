@@ -32,7 +32,7 @@
     .CurrentTime {
         text-align: right;
         width: 550px;
-        font-size: 50px;
+        font-size: 60px;
         border: 1px solid;
     }
 
@@ -104,11 +104,11 @@
 </head>
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
 
-    <div class="DateDiv">
+    <!-- <div class="DateDiv">
         <div class="WeekDay">W<span id="WeekDay"> </span></div> <div id="Date">D<span id="Date"> </span></div>
-    </div>
+    </div> -->
 
-    <div class="CurrentTime">T<span id="CurrentTime"> </span></div>
+    <div class="CurrentTime"><span id="CurrentTime"> </span></div>
 
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
@@ -222,8 +222,8 @@
             // Compose the string for display
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
 
-            $( '#Day' ).html(days[dt.getDay()]);
-            $( '#Date' ).html(dt.toLocaleDateString());
+            // $( '#Day' ).html(days[dt.getDay()]);
+            // $( '#Date' ).html(dt.toLocaleDateString());
             $( '#CurrentTime' ).html(currentTimeString);
             
             checkFeedAge();
