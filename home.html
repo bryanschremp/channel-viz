@@ -11,28 +11,28 @@
       /* border: 1px solid; */
     }
 
-    #DateDiv {
+    .DateDiv {
         text-align: right;
         width: 550px;
         padding: 2px;
         border: 1px solid;
     }
 
-    #Day {
+    .WeekDay {
         text-align: right;
         font-size: 47px;
         display: inline-block;
         border: 1px solid;
     }
 
-    #Date {
+    .Date {
         text-align: right;
         font-size: 47px;
         display: inline-block;
         border: 1px solid;
     }
 
-    #TimeDiv {
+    .Time {
         text-align: right;
         font-size: 47px;
         width: 550px;
@@ -114,11 +114,11 @@
 </head>
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
 
-    <div id="DateDiv">
-        <div id="Day"> </div> <div id="Date"> </div>
+    <div class="DateDiv">
+        <div class="WeekDay"> </div> <div id="Date"> </div>
     </div>
 
-    <div id="TimeDiv">
+    <div class="TimeDiv">
         <div class="CurrentTime"> </div>
     </div>
 
