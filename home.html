@@ -36,6 +36,7 @@
         text-align: right;
         width: 550px;
         font-size: 47px;
+        border: 1px solid;
     }
 
    .ValueDiv {
@@ -107,10 +108,10 @@
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
 
     <div class="DateDiv">
-        <div class="WeekDay"> D</div> <div id="Date">T </div>
+        <div class="WeekDay"> D</div><div id="Date">T </div>
     </div>
 
-    <div class="CurrentTime">Time </div>
+    <div class="CurrentTime"><span id="CurrentTime"> </span> </div>
 
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
