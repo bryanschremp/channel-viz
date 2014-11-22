@@ -12,23 +12,20 @@
     }
 
     .DateDiv {
-        text-align: right;
         width: 550px;
         padding: 3px;
         font-size: 47px;
     }
 
     .WeekDay {
-        width: 224px;
+        width: 220px;
         display:inline-block;
-        vertical-align: bottom;
         border: 1px solid;
     }
 
     .Date {
-        width: 224px;
+        width: 220px;
         display:inline-block;
-        vertical-align: bottom;
         border: 1px solid;
     }
 
@@ -108,10 +105,10 @@
 <body onload="updateClock(); setInterval('updateClock()', 60000);">
 
     <div class="DateDiv">
-        <div class="WeekDay"> D</div><div id="Date">T </div>
+        <div class="WeekDay"><span id="WeekDay"> </span></div><div id="Date"><span id="Date"> </span></div>
     </div>
 
-    <div class="CurrentTime"><span id="CurrentTime"> </span> </div>
+    <div class="CurrentTime"><span id="CurrentTime"> </span></div>
 
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
