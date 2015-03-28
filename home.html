@@ -136,15 +136,24 @@
         <div id="Updated">Updated: </div>
         <div id="Timestamp"> </div>
     </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" --><!-- /script>
+--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
         
         var lastUpdate = "";
                 
         $( document ).ready( function ( $ ) {
-
+            
+            // http://api.thingspeak.com/channels/(channel_id)/feed/last.json?callback=?
+            /*
+            $.getJSON( 'http://api.thingspeak.com/channels/(channel_id)/feed/last.json?callback=?',
+            function(data)
+            { 
+              // Insert JavaScript code to operate on return data
+            }
+            );
+            */
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
