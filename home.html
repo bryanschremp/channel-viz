@@ -144,17 +144,11 @@
         var lastUpdate = "";
                 
         $( document ).ready( function ( $ ) {
+            getUpdates(); 
             
-            // http://api.thingspeak.com/channels/(channel_id)/feed/last.json?callback=?
-            
-            $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?',
-            function(data)
-            { 
-              {"created_at":"","entry_id":(entry_id)"field1":"","field2":"","field3":"","field4":"","field5":"","field6":"","field7":"","field8":""}
-              $( '#Indoor_Temp' ).html( data.field1 );
-            }
-            );
-            
+		        // check for new updates
+		        setInterval('getUpdates()',120000);
+		    
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
@@ -211,7 +205,32 @@
             
         });
 
-        function updateClock() {
+      function getUpdates() {
+		     
+			// get the data with a webservice call
+			$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
+					    					
+					// if the field1 has data update the page
+					if (data.field1) {
+					    $( '#Indoor_Temp' ).html( data.field1 );
+					    /*
+					    $("#color1").css("background", data.field1);
+					    $("#color2").css("background", data.field2);
+					    $("#color3").css("background", data.field3);
+					    $("#color4").css("background", data.field4);
+					    $("#color5").css("background", data.field5);
+					    $("#color6").css("background", data.field6);
+					    $("#color7").css("background", data.field7);
+					    $("#color8").css("background", data.field8);
+					    $("#credits").css("background", data.field8);
+					    */					    						    
+					}           
+  
+			});
+			
+		}
+		
+		function updateClock() {
             var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var dt = new Date();
             var currentHours = dt.getHours();
