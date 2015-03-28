@@ -163,11 +163,11 @@
             });
 
             xively.datastream.get( feedID, "Indoor_Humidity", function ( datastream ) {
-                $( '#Indoor_Humidity' ).html( datastream["current_value"] );
+                // $( '#Indoor_Humidity' ).html( datastream["current_value"] );
                 // console.log( "Indoor_Humidity updated" );
                 
                 xively.datastream.subscribe( feedID, "Indoor_Humidity", function ( event, datastream_updated ) {
-                    $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
+                    // $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
                     // console.log( "Subscribed Indoor_Humidity updated" );
                 });
             });
@@ -207,28 +207,17 @@
 
       function getUpdates() {
 		     
-			// get the data with a webservice call
-			$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
+		// get the data with a webservice call
+		$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
 					    					
-					// if the field1 has data update the page
-					if (data.field1) {
-					    $( '#Indoor_Temp' ).html( data.field1 );
-					    /*
-					    $("#color1").css("background", data.field1);
-					    $("#color2").css("background", data.field2);
-					    $("#color3").css("background", data.field3);
-					    $("#color4").css("background", data.field4);
-					    $("#color5").css("background", data.field5);
-					    $("#color6").css("background", data.field6);
-					    $("#color7").css("background", data.field7);
-					    $("#color8").css("background", data.field8);
-					    $("#credits").css("background", data.field8);
-					    */					    						    
-					}           
-  
-			});
+			// if the field1 has data update the page
+			if (data.field1) {
+		    	$( '#Indoor_Temp' ).html( data.field1 );
+		    	$( '#Indoor_Humidity' ).html( data.field2 );
+			}           
+  		});
 			
-		}
+	}
 		
 		function updateClock() {
             var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
