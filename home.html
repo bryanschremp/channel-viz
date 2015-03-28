@@ -136,58 +136,56 @@
         <div id="Updated">Updated: </div>
         <div id="Timestamp"> </div>
     </div>
-    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" ></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
-        
         var lastUpdate = "";
                 
         $( document ).ready( function ( $ ) {
-            getUpdates(); 
+        	getUpdates(); 
             
-		        // check for new updates
-		        setInterval('getUpdates()',120000);
+        	// check for new updates
+        	setInterval( 'getUpdates()', 120000 );
 		    
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
             xively.datastream.get( feedID, "Indoor_Temp", function ( datastream ) {
-                // $( '#Indoor_Temp' ).html( datastream["current_value"] );
+                $( '#Indoor_Temp' ).html( datastream["current_value"] );
                 // console.log( "Indoor_Temp updated" );
                 
                 xively.datastream.subscribe( feedID, "Indoor_Temp", function ( event, datastream_updated ) {
-                    // $( '#Indoor_Temp' ).html( datastream_updated["current_value"] );
+                    $( '#Indoor_Temp' ).html( datastream_updated["current_value"] );
                     // console.log( "Subscribed Indoor_Temp updated" );
                 } );
             });
 
             xively.datastream.get( feedID, "Indoor_Humidity", function ( datastream ) {
-                // $( '#Indoor_Humidity' ).html( datastream["current_value"] );
+                $( '#Indoor_Humidity' ).html( datastream["current_value"] );
                 // console.log( "Indoor_Humidity updated" );
                 
                 xively.datastream.subscribe( feedID, "Indoor_Humidity", function ( event, datastream_updated ) {
-                    // $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
+                    $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
                     // console.log( "Subscribed Indoor_Humidity updated" );
                 });
             });
 
             xively.datastream.get( feedID, "Outdoor_Temp", function ( datastream ) {
-                $( '#Outdoor_Temp' ).html( datastream["current_value"] );
+                // $( '#Outdoor_Temp' ).html( datastream["current_value"] );
                 // console.log( "Outdoor_Temp updated" );
                 
                 xively.datastream.subscribe( feedID, "Outdoor_Temp", function ( event, datastream_updated ) {
-                    $( '#Outdoor_Temp' ).html( datastream_updated["current_value"] );
+                    // $( '#Outdoor_Temp' ).html( datastream_updated["current_value"] );
                     // console.log( "Subscribed Outdoor_Temp updated" );
                 });
             });
 
             xively.datastream.get( feedID, "Outdoor_Humidity", function ( datastream ) {
-                $( '#Outdoor_Humidity' ).html( datastream["current_value"] );
+                // $( '#Outdoor_Humidity' ).html( datastream["current_value"] );
                 // console.log( "Outdoor_Humidity updated" );
                 
                 xively.datastream.subscribe( feedID, "Outdoor_Humidity", function (event, datastream_updated ) {
-                    $( '#Outdoor_Humidity' ).html( datastream_updated["current_value"] );
+                    // $( '#Outdoor_Humidity' ).html( datastream_updated["current_value"] );
                     // console.log( "Subscribed Outdoor_Humidity updated" );
                 } );
             } );
@@ -202,60 +200,47 @@
                     // console.log( lastUpdate );
                 } );
             } );
-            
         });
 
-      function getUpdates() {
-		     
-		// get the data with a webservice call
-		$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
-					    					
-			// if the field1 has data update the page
-			if (data.field1) {
-		    	$( '#Indoor_Temp' ).html( data.field1 );
-		    	$( '#Indoor_Humidity' ).html( data.field2 );
-			}           
-  		});
-			
-	}
+    	function getUpdates() {
+			// get the data with a webservice call
+			$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
+				// if the field1 has data update the page
+				if (data.field1) {
+		    		$( '#Outdoor_Temp' ).html( data.field1 );
+		    		$( '#Outdoor_Humidity' ).html( data.field2 );
+				}           
+  			});
+		}
 		
 		function updateClock() {
             var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var dt = new Date();
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();
-
             // Pad the minutes and seconds with leading zeros, if required
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-
             // Choose either "AM" or "PM" as appropriate
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-
             // Convert the hours component to 12-hour format if needed
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-
             // Convert an hours component of "0" to "12"
             currentHours = (currentHours == 0) ? 12 : currentHours;
-
             // Compose the string for display
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
-
             // $( '#Day' ).html(days[dt.getDay()]);
             // $( '#Date' ).html(dt.toLocaleDateString());
             $( '#CurrentTime' ).html(currentTimeString);
-            
-            checkFeedAge();
+            // checkFeedAge();
         }
         
         function checkFeedAge() {
             var dt = new Date();
             var lastUpdateMs = new Date( lastUpdate );
             var diff = ( dt.getTime() - lastUpdateMs.getTime() ) / 1000;
-            
             // console.log( "r: " + dt.getTime() );
             // console.log( "f: " + lastUpdateMs.getTime() );
             console.log( "age: " + diff + " seconds." );
-            
             if ( diff > 300 )
             {
                 console.log( "Data is stale by " + ( diff ) + " seconds." );
@@ -265,7 +250,6 @@
             {
                 $( '#AlertText' ).html( "" );
             }
-        
         }
     </script>
 </body>
