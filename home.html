@@ -12,7 +12,6 @@
             text-align: left;
             width: 550px;
             font-size: 80px;
-            border: 1px solid;
         }
     </style>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -25,7 +24,7 @@
         var data;
         var chart;
         var options = {
-            width: 400, height: 300,
+            width: 800, height: 600,
             greenFrom: 68, greenTo: 78,
             yellowFrom: 78, yellowTo: 88,
             redFrom: 88, redTo: 100,
@@ -110,7 +109,7 @@
     </script>
   </head>
   <body onload="updateClock(); setInterval( 'updateClock()', 60000 );">
-    <div id="chart_div" style="width: 400px; height: 300px;"></div>
+    <div id="chart_div" style="width: 800px; height: 600px;"></div>
     <div class="CurrentTime"><span id="CurrentTime"> </span></div>
   </body>
 </html>
