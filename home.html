@@ -1,256 +1,116 @@
 <html>
-<head>
-  <title>Home Temps</title>
-  <style type="text/css">
+  <head>
+    <style type="text/css">
+        body {
+          padding: 0;
+          color: white;
+          background-color: #000000;
+          font-family: "Segoe UI";
+        }
 
-    body {
-      padding: 0;
-      color: white;
-      background-color: #000000;
-      font-family: "Segoe UI";
-    }
-
-    .DateDiv {
-        width: 550px;
-        font-size: 50px;
-    }
-
-    .WeekDay {
-        text-align: right;
-        width: 220px;
-        display: inline-block;
-        border: 1px solid;
-    }
-
-    .Date {
-        text-align: right;
-        width: 220px;
-        display: inline-block;
-        border: 1px solid;
-    }
-
-    .CurrentTime {
-        text-align: right;
-        width: 550px;
-        font-size: 80px;
-        /* border: 1px solid; */
-    }
-
-   .ValueDiv {
-        width: 550px;
-        padding: 3px;
-        border: 2px solid;
-        border-radius: 20px;
-        background-color: DarkSlateBlue;
-   }
-
-   .Zone {
-       padding: 3px;
-       font-size: 47px;
-       text-shadow: 4px 4px 4px black;
-       /* border: 1px solid; */
-   }
-
-   .lbl{
-      width: 250px;
-      padding: 3px;
-      display:inline-block;
-      text-align: right;
-      vertical-align: bottom;
-      font-size: 47px;
-      text-shadow: 4px 4px 4px black;
-      /* border: 1px solid; */
-   }
-
-   .val{
-      display:inline-block;
-      vertical-align: bottom;
-      font-size: 80px;
-      text-shadow: 4px 4px 4px black;
-      /* border: 1px solid; */
-   }
-
-   #AlertDiv{
-       width: 550px;
-       /* border: 1px solid; */ 
-   }
-   
-   #AlertText {
-       color: red; 
-       font-size: 30px;
-       font-weight: bold;
-       /* border: 1px solid; */
-   }
-   
-   #TimestampDiv {
-       width: 550px;
-       font-size: 26px;
-       /* border: 1px solid; */
-   }
-
-   #Updated {
-        display:inline-block;
-        font-size: 26px;
-        /* border: 1px solid; */
-    }
-
-   #Timestamp {
-       display:inline-block;
-       font-size: 26px;
-       /* border: 1px solid; */
-   }
-
-  </style>
-</head>
-<body onload="updateClock(); setInterval('updateClock()', 60000);">
-
-    <!-- <div class="DateDiv">
-        <div class="WeekDay">W<span id="WeekDay"> </span></div> <div id="Date">D<span id="Date"> </span></div>
-    </div> -->
-
-    <div class="CurrentTime"><span id="CurrentTime"> </span></div>
-
-    <div class="ValueDiv">
-        <div class="Zone">Indoor</div>
-        <div class="lbl">Temp</div>
-        <div class="val">&nbsp;<span id="Indoor_Temp"> </span>F</div>
-        <br/>
-        <div class="lbl">Humidity</div>
-        <div class="val">&nbsp;<span id="Indoor_Humidity"> </span>%</div>
-    </div>
-
-    <div class="ValueDiv">
-        <div class="Zone">Outdoor</div>
-        <div class="lbl">Temp</div>
-        <div class="val">&nbsp;<span id="Outdoor_Temp"> </span>F</div>
-        <br />
-        <div class="lbl">Humidity</div>
-        <div class="val">&nbsp;<span id="Outdoor_Humidity"> </span>%</div>
-    </div>
-    
-    <div id="AlertDiv">
-        <div id="AlertText"> </div>
-    </div>
-    
-    <div id="TimestampDiv">
-        <div id="Updated">Updated: </div>
-        <div id="Timestamp"> </div>
-    </div>
+        .CurrentTime {
+            text-align: left;
+            width: 550px;
+            font-size: 80px;
+            border: 1px solid;
+        }
+    </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
-    <script>
-        var lastUpdate = "";
-                
-        $( document ).ready( function ( $ ) {
-        	getUpdates(); 
-            
-        	// check for new updates
-        	setInterval( 'getUpdates()', 120000 );
-		    
-            xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
-            var feedID = 1479543148;
+    <script type="text/javascript">
+        xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
+        var feedID = 1479543148;
+        
+        var data;
+        var chart;
+        var options = {
+            width: 400, height: 300,
+            greenFrom: 68, greenTo: 78,
+            yellowFrom: 78, yellowTo: 88,
+            redFrom: 88, redTo: 100,
+            min: 10, max: 100,
+            minorTicks: 10,
+            animation: {
+                duration: 400, 
+                easing: 'out',
+            },
+        };
 
+        google.load("visualization", "1", {packages:["gauge"]});
+        google.setOnLoadCallback(drawChart);
+        
+        function loadData() {
+            // get the data with a webservice call
+            $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(feedData) {
+                // if the field1 has data update the page
+                if (feedData.field1) {
+                    console.log( feedData.field1 );
+                    data.setValue(2, 1, feedData.field1 );
+                    data.setValue(3, 1, feedData.field2 );
+                }           
+            });
+            /*
             xively.datastream.get( feedID, "Indoor_Temp", function ( datastream ) {
                 $( '#Indoor_Temp' ).html( datastream["current_value"] );
-                // console.log( "Indoor_Temp updated" );
-                
                 xively.datastream.subscribe( feedID, "Indoor_Temp", function ( event, datastream_updated ) {
                     $( '#Indoor_Temp' ).html( datastream_updated["current_value"] );
-                    // console.log( "Subscribed Indoor_Temp updated" );
                 } );
             });
 
             xively.datastream.get( feedID, "Indoor_Humidity", function ( datastream ) {
                 $( '#Indoor_Humidity' ).html( datastream["current_value"] );
-                // console.log( "Indoor_Humidity updated" );
-                
                 xively.datastream.subscribe( feedID, "Indoor_Humidity", function ( event, datastream_updated ) {
                     $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
-                    // console.log( "Subscribed Indoor_Humidity updated" );
                 });
             });
-
-            xively.datastream.get( feedID, "Outdoor_Temp", function ( datastream ) {
-                // $( '#Outdoor_Temp' ).html( datastream["current_value"] );
-                // console.log( "Outdoor_Temp updated" );
-                
-                xively.datastream.subscribe( feedID, "Outdoor_Temp", function ( event, datastream_updated ) {
-                    // $( '#Outdoor_Temp' ).html( datastream_updated["current_value"] );
-                    // console.log( "Subscribed Outdoor_Temp updated" );
-                });
-            });
-
-            xively.datastream.get( feedID, "Outdoor_Humidity", function ( datastream ) {
-                // $( '#Outdoor_Humidity' ).html( datastream["current_value"] );
-                // console.log( "Outdoor_Humidity updated" );
-                
-                xively.datastream.subscribe( feedID, "Outdoor_Humidity", function (event, datastream_updated ) {
-                    // $( '#Outdoor_Humidity' ).html( datastream_updated["current_value"] );
-                    // console.log( "Subscribed Outdoor_Humidity updated" );
-                } );
-            } );
             
             xively.feed.get( feedID, function ( feed ) {
                 $( '#Timestamp' ).html( feed["updated"] );
-                // console.log("feed_updated");
                 
                 xively.feed.subscribe( feedID, function ( event, feed_updated ) {
                     $( '#Timestamp' ).html( feed_updated["updated"] );
                     lastUpdate = feed_updated["updated"];
-                    // console.log( lastUpdate );
                 } );
             } );
-        });
+            */
+                        
+            chart.draw( data, options );
+        }
 
-    	function getUpdates() {
-			// get the data with a webservice call
-			$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
-				// if the field1 has data update the page
-				if (data.field1) {
-		    		$( '#Outdoor_Temp' ).html( data.field1 );
-		    		$( '#Outdoor_Humidity' ).html( data.field2 );
-				}           
-  			});
-		}
-		
-		function updateClock() {
-            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        function drawChart() {
+            data = new google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Indoor Temp', 0],
+            ['Indoor RH', 0],
+            ['Outdoor Temp', 0],
+            ['Outdoor RH', 0] 
+            ]);
+            
+            chart = new google.visualization.Gauge( document.getElementById( 'chart_div' ) );
+            chart.draw( data, options );
+        }
+        
+        // $( document ).ready( 'loadData()' );
+        
+        setInterval('loadData()', 6000);
+        
+        function updateClock() {
             var dt = new Date();
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();
-            // Pad the minutes and seconds with leading zeros, if required
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-            // Choose either "AM" or "PM" as appropriate
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-            // Convert the hours component to 12-hour format if needed
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-            // Convert an hours component of "0" to "12"
             currentHours = (currentHours == 0) ? 12 : currentHours;
-            // Compose the string for display
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
-            // $( '#Day' ).html(days[dt.getDay()]);
-            // $( '#Date' ).html(dt.toLocaleDateString());
             $( '#CurrentTime' ).html(currentTimeString);
-            // checkFeedAge();
         }
-        
-        function checkFeedAge() {
-            var dt = new Date();
-            var lastUpdateMs = new Date( lastUpdate );
-            var diff = ( dt.getTime() - lastUpdateMs.getTime() ) / 1000;
-            // console.log( "r: " + dt.getTime() );
-            // console.log( "f: " + lastUpdateMs.getTime() );
-            console.log( "age: " + diff + " seconds." );
-            if ( diff > 300 )
-            {
-                console.log( "Data is stale by " + ( diff ) + " seconds." );
-                $( '#AlertText' ).html( "FEED IS STALE BY " + ( diff ) + " SEC." );
-            }
-            else
-            {
-                $( '#AlertText' ).html( "" );
-            }
-        }
+                
     </script>
-</body>
+  </head>
+  <body onload="updateClock(); setInterval( 'updateClock()', 60000 );">
+    <div id="chart_div" style="width: 400px; height: 300px;"></div>
+    <div class="CurrentTime"><span id="CurrentTime"> </span></div>
+  </body>
 </html>
