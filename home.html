@@ -112,11 +112,10 @@
 			$.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
 				// if the field1 has data update the page
 				if (data.field1) {
-		    		$( '#Outdoor_Temp' ).html( data.field1 );
-		    		$( '#Outdoor_Humidity' ).html( data.field2 );
-		    		$( '#Indoor_Temp' ).html( data.field3 );
-		    		$( '#Indoor_Humidity' ).html( data.field4 );		    		
-		    		
+		    			$( '#Indoor_Temp' ).html( data.field3 );
+		    			$( '#Indoor_Humidity' ).html( data.field4 );
+		    			$( '#Outdoor_Temp' ).html( data.field1 );
+		    			$( '#Outdoor_Humidity' ).html( data.field2 );
 				}           
   			});
 		}
