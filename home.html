@@ -85,7 +85,7 @@
             
         	// check for new updates
         	setInterval( 'getUpdates()', 120000 );
-		    
+		    /*
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
@@ -104,6 +104,7 @@
                     $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
                 });
             });
+            */
         });
 
     	function getUpdates() {
@@ -113,6 +114,9 @@
 				if (data.field1) {
 		    		$( '#Outdoor_Temp' ).html( data.field1 );
 		    		$( '#Outdoor_Humidity' ).html( data.field2 );
+		    		$( '#Indoor_Temp' ).html( data.field3 );
+		    		$( '#Indoor_Humidity' ).html( data.field4 );		    		
+		    		
 				}           
   			});
 		}
