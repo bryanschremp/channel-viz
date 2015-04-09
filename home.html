@@ -85,6 +85,7 @@
             
         	// check for new updates
         	setInterval( 'getUpdates()', 120000 );
+            /*
             xively.setKey( "Po7EWwTloChQAz2HIJitKwCE8ivLVACilaIokUFo3e9459gc");
             var feedID = 1479543148;
 
@@ -103,6 +104,7 @@
                     $( '#Indoor_Humidity' ).html( datastream_updated["current_value"] );
                 });
             });
+            */
         });
 
     	function getUpdates() {
@@ -114,6 +116,16 @@
 		    			// $( '#Indoor_Humidity' ).html( data.field4 );
 		    			$( '#Outdoor_Temp' ).html( data.field1 );
 		    			$( '#Outdoor_Humidity' ).html( data.field2 );
+				}           
+  			});
+  			// get the data with a webservice call
+			$.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
+				// if the field1 has data update the page
+				if (data.field1) {
+		    			// $( '#Indoor_Temp' ).html( data.field3 );
+		    			// $( '#Indoor_Humidity' ).html( data.field4 );
+		    			$( '#Indoor_Temp' ).html( data.field1 );
+		    			$( '#Indoor_Humidity' ).html( data.field2 );
 				}           
   			});
 		}
