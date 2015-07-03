@@ -100,9 +100,9 @@
             // get the data with a webservice call
             $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function( data )  {
                 if ( data.field1 ) { // If the field1 has data, update the page.
-                    $( '#Outdoor_Timestamp' ).html( data.created_at );
                     $( '#Outdoor_Temp' ).html( data.field1 );
                     $( '#Outdoor_Humidity' ).html( data.field2 );
+                    $( '#Outdoor_Timestamp' ).html( data.created_at + 'dsgdgh' );
             }           
             } );
 
