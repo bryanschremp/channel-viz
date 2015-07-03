@@ -28,7 +28,7 @@
             padding: 3px;
             font-size: 47px;
             text-shadow: 4px 4px 4px black;
-            /* border: 1px solid; */
+            border: 1px solid;
         }
 
         .lbl{
@@ -39,7 +39,7 @@
             vertical-align: bottom;
             font-size: 47px;
             text-shadow: 4px 4px 4px black;
-            /* border: 1px solid; */
+            border: 1px solid;
         }
 
         .val{
@@ -47,7 +47,7 @@
             vertical-align: bottom;
             font-size: 80px;
             text-shadow: 4px 4px 4px black;
-            /* border: 1px solid; */
+            border: 1px solid;
         }
     </style>
 </head>
@@ -55,6 +55,7 @@
     <div class="CurrentTime"><span id="CurrentTime"> </span></div>
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
+        
         <div class="lbl">Temp</div>
         <div class="val">&nbsp;<span id="Indoor_Temp"> </span>F</div>
         <br/>
@@ -82,8 +83,9 @@
         */
         function getUpdates() {
             // get the data with a webservice call
-            $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function( data)  {
+            $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function( data )  {
                 if ( data.field1 ) { // If the field1 has data, update the page.
+                    $( '#Outdoor_Timestamp' ).html( data.created_at );
                     $( '#Outdoor_Temp' ).html( data.field1 );
                     $( '#Outdoor_Humidity' ).html( data.field2 );
             }           
@@ -92,6 +94,7 @@
             // get the data with a webservice call
             $.getJSON( 'http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function( data ) {
             if ( data.field1 ) { // If the field1 has data, update the page.
+                    $( '#Indoor_Timestamp' ).html( data.created_at );
                     $( '#Indoor_Temp' ).html( data.field1 );
                     $( '#Indoor_Humidity' ).html( data.field2 );
             }           
