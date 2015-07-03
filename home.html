@@ -36,7 +36,7 @@
             display:inline-block;
             padding: 3px;
             vertical-align: top;
-            font-size: 30px;
+            font-size: 28px;
             text-shadow: 4px 4px 4px black;
             text-align: right;
             width: 380px;
@@ -67,7 +67,7 @@
     <div class="CurrentTime"><span id="CurrentTime"> </span></div>
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
-        <div class="created_at">&nbsp;<span id="Indoor_Timestamp"> </span></div>
+        <div class="created_at"><span id="Indoor_Timestamp"> </span></div>
         <br/>
         <div class="lbl">Temp</div>
         <div class="val">&nbsp;<span id="Indoor_Temp"> </span>F</div>
@@ -78,7 +78,7 @@
     
     <div class="ValueDiv">
         <div class="Zone">Outdoor</div>
-        <div class="created_at">&nbsp;<span id="Outdoor_Timestamp"> </span></div>
+        <div class="created_at"><span id="Outdoor_Timestamp"> </span></div>
         <br/>
         <div class="lbl">Temp</div>
         <div class="val">&nbsp;<span id="Outdoor_Temp"> </span>F</div>
@@ -103,21 +103,21 @@
             // get the data with a webservice call
             $.getJSON( 'http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function( data ) {
             if ( data.field1 ) { // If the field1 has data, update the page.
-                    console.log ( data.created_at );
+                    // console.log ( data.created_at );
                     $( '#Indoor_Timestamp' ).html( data.created_at );
                     $( '#Indoor_Temp' ).html( data.field1 );
                     $( '#Indoor_Humidity' ).html( data.field2 );
-            }           
+                }           
             } );
             
             // get the data with a webservice call
             $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function( data )  {
                 if ( data.field1 ) { // If the field1 has data, update the page.
-                    console.log ( data.created_at );
+                    // console.log ( data.created_at );
                     $( '#Outdoor_Timestamp' ).html( data.created_at );
                     $( '#Outdoor_Temp' ).html( data.field1 );
                     $( '#Outdoor_Humidity' ).html( data.field2 );
-            }           
+                }           
             } );
         }
 
