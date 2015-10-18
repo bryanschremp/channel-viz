@@ -15,12 +15,14 @@
         }
         
         .CurrentTime {
+            display: block;
             width: 400px;
             font-size: 80px;
             border: 1px solid;
         }
 
         #label {
+            display: block;
             padding: 3px;
             text-align: right;
             font-size: 40px;
@@ -29,6 +31,7 @@
         }
 
         #value {
+            display: block;
             padding: 3px;
             text-align: right;
             font-size: 80px;
@@ -48,17 +51,13 @@
         function getUpdates() {
             $.getJSON( 'http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function( data ) {
             if ( data.field1 ) { // If the field1 has data, update the page.
-                    // console.log ( data.created_at );
                     $( '#Indoor_Temp' ).html( data.field1 );
-                    $( '#Indoor_Humidity' ).html( data.field2 );
                 }           
             } );
             
             $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function( data )  {
                 if ( data.field1 ) { // If the field1 has data, update the page.
-                    // console.log ( data.created_at );
                     $( '#Outdoor_Temp' ).html( data.field1 );
-                    $( '#Outdoor_Humidity' ).html( data.field2 );
                 }           
             } );
         }
@@ -75,7 +74,7 @@
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
             // Convert an hours component of "0" to "12"
             currentHours = (currentHours == 0) ? 12 : currentHours;
-            var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
+            var currentTimeString = currentHours + ":" + currentMinutes + "" + timeOfDay;
             $( '#CurrentTime' ).html(currentTimeString);
         }
     </script>
