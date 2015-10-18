@@ -30,7 +30,15 @@
             border: 1px solid;
         }
 
-        #value {
+        #Indoor_Temp {
+            display: inline-block;
+            text-align: right;
+            font-size: 80px;
+            width: 150px;
+            border: 1px solid;
+        }
+        
+        #Outdoor_Temp {
             display: inline-block;
             text-align: right;
             font-size: 80px;
@@ -41,8 +49,8 @@
 </head>
 <body onload="updateClock(); getUpdates(); setInterval( 'updateClock()', 60000 ); setInterval( 'getUpdates()', 60000 );">
     <div class="Row"><span id="time"> </span></div>
-    <div class="Row"><span id="label">Indoor:</span><span id="value"><span id="Indoor_Temp"> </span>F</span></div>
-    <div class="Row"><span id="label">Outdoor:</span><span id="value"><span id="Outdoor_Temp"> </span>F</span></div>
+    <div class="Row"><span id="label">Indoor:</span><span id="Indoor_Temp"> </span>F</div>
+    <div class="Row"><span id="label">Outdoor:</span><span id="Outdoor_Temp"> </span>F</div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
