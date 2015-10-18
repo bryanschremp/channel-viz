@@ -6,7 +6,7 @@
             padding: 0;
             color: white;
             background-color: #000000;
-            font-family: "Segoe UI";
+            font-family: "FixedSys";
         }
 
         .CurrentTime {
@@ -34,7 +34,7 @@
 </head>
 <body onload="updateClock(); getUpdates(); setInterval( 'updateClock()', 60000 ); setInterval( 'getUpdates()', 60000 );">
     <div class="CurrentTime"><span id="CurrentTime"> </span></div>
-    <div><span class="Label"> Indoor: </span><span class="Value">&nbsp;<span id="Indoor_Temp"> </span>F</div>
+    <div><span class="Label">&nbsp;Indoor: </span><span class="Value">&nbsp;<span id="Indoor_Temp"> </span>F</div>
     <div><span class="Label">Outdoor: </span><span class="Value">&nbsp;<span id="Outdoor_Temp"> </span>F</div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
