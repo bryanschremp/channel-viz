@@ -14,7 +14,7 @@
             border: 1px solid;
         }
         
-        .CurrentTime {
+        #time {
             display: block;
             width: 400px;
             font-size: 80px;
@@ -39,9 +39,9 @@
     </style>
 </head>
 <body onload="updateClock(); getUpdates(); setInterval( 'updateClock()', 60000 ); setInterval( 'getUpdates()', 60000 );">
-    <div class="Row"><span class="CurrentTime" id="CurrentTime"> </span></div>
-    <div class="Row"><span id="label">Indoor:</span><span id="value"><span id="Indoor_Temp"></span>F</span></div>
-    <div class="Row"><span id="label">Outdoor:</span><span id="value"><span id="Outdoor_Temp"></span>F</span></div>
+    <div class="Row"><span id="CurrentTime"> </span></div>
+    <div class="Row"><span id="label">Indoor:</span><span id="value"><span id="Indoor_Temp"> </span>F</span></div>
+    <div class="Row"><span id="label">Outdoor:</span><span id="value"><span id="Outdoor_Temp"> </span>F</span></div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
