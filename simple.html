@@ -11,7 +11,7 @@
 
         .Row {
             width: 750px;
-            border: 1px solid;
+            border: 0px solid;
         }
         
         #time {
@@ -19,7 +19,7 @@
             text-align: right;
             font-size: 150px;
             width: 750px;
-            border: 1px solid;
+            border: 0px solid;
         }
 
         #label {
@@ -49,8 +49,8 @@
 </head>
 <body onload="updateClock(); getUpdates(); setInterval( 'updateClock()', 60000 ); setInterval( 'getUpdates()', 60000 );">
     <div class="Row"><span id="time"> </span></div>
-    <div class="Row"><span id="label">Indoor:</span><span id="Indoor_Temp"> </span>F</div>
-    <div class="Row"><span id="label">Outdoor:</span><span id="Outdoor_Temp"> </span>F</div>
+    <div class="Row"><span id="label">Indoor:</span><span id="Indoor_Temp"> </span><span id="label">F</span></div>
+    <div class="Row"><span id="label">Outdoor:</span><span id="Outdoor_Temp"> </span><span id="label">F</span></div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
