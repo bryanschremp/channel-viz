@@ -10,10 +10,10 @@
         }
 
         .CurrentTime {
-            text-align: left;
+            text-align: right;
             width: 550px;
             font-size: 80px;
-            border: 1px solid;
+            /* border: 1px solid; */
         }
 
         .ValueDiv {
@@ -29,9 +29,18 @@
             padding: 3px;
             font-size: 47px;
             text-shadow: 4px 4px 4px black;
-            border: 1px solid;
+            /* border: 1px solid; */
         }
 
+        .created_at {
+            display:inline-block;
+            padding: 3px;
+            vertical-align: top;
+            font-size: 28px;
+            text-shadow: 4px 4px 4px black;
+            text-align: right;
+            width: 340px;
+            /* border: 1px solid; */
         }
         
         .lbl {
@@ -42,7 +51,7 @@
             text-shadow: 4px 4px 4px black;          
             text-align: right;
             width: 250px;
-             border: 1px solid;
+            /* border: 1px solid; */
         }
 
         .val {
@@ -50,7 +59,7 @@
             vertical-align: bottom;
             font-size: 80px;
             text-shadow: 4px 4px 4px black;
-            border: 1px solid;
+            /* border: 1px solid; */
         }
     </style>
 </head>
@@ -58,6 +67,8 @@
     <div class="CurrentTime"><span id="CurrentTime"> </span></div>
     <div class="ValueDiv">
         <div class="Zone">Indoor</div>
+        <div class="created_at"><span id="Indoor_Timestamp"> </span></div>
+        <br/>
         <div class="lbl">Temp</div>
         <div class="val">&nbsp;<span id="Indoor_Temp"> </span>F</div>
         <br/>
@@ -67,6 +78,7 @@
     
     <div class="ValueDiv">
         <div class="Zone">Outdoor</div>
+        <div class="created_at"><span id="Outdoor_Timestamp"> </span></div>
         <br/>
         <div class="lbl">Temp</div>
         <div class="val">&nbsp;<span id="Outdoor_Temp"> </span>F</div>
@@ -74,15 +86,25 @@
         <div class="lbl">Humidity</div>
         <div class="val">&nbsp;<span id="Outdoor_Humidity"> </span>%</div>
     </div>
-
+    
+    <iframe width="560" height="300" style="border: 0px" src="http://api.thingspeak.com/plugins/15949" ></iframe>
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
+        /*
+        $( document ).ready( function ( $ ) {
+            getUpdates();
+            setInterval( 'getUpdates()', 60000 );
+        });
+        */
+        
         function getUpdates() {
             // get the data with a webservice call
             $.getJSON( 'http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function( data ) {
             if ( data.field1 ) { // If the field1 has data, update the page.
                     // console.log ( data.created_at );
+                    $( '#Indoor_Timestamp' ).html( data.created_at );
                     $( '#Indoor_Temp' ).html( data.field1 );
                     $( '#Indoor_Humidity' ).html( data.field2 );
                 }           
@@ -92,6 +114,7 @@
             $.getJSON( 'http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function( data )  {
                 if ( data.field1 ) { // If the field1 has data, update the page.
                     // console.log ( data.created_at );
+                    $( '#Outdoor_Timestamp' ).html( data.created_at );
                     $( '#Outdoor_Temp' ).html( data.field1 );
                     $( '#Outdoor_Humidity' ).html( data.field2 );
                 }           

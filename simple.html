@@ -6,64 +6,139 @@
             padding: 0;
             color: white;
             background-color: #000000;
-            font-family: "Lucida Console", Monaco, monospace;
+            font-family: "Digital-7 Mono", fixedsys, "Lucida Console", Monaco, monospace;
         }
 
-        .Row {
-            width: 900px;
+        .topframe {
+            width: 955px;
+            padding: 3px;
+            border: 0px solid;
+        }
+        
+        #row1_col1 {
+            display: inline-block;
+            width: 300px;
+            height: 60px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
+            font-size: 60px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        #row1_col2 {
+            display: inline-block;
+            width: 300px;
+            height: 60px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
+            font-size: 60px;
+            text-align: center;
+            vertical-align: top;
+        }
+        
+        #row1_col3 {
+            display: inline-block;
+            width: 300px;
+            height: 60px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
+            font-size: 60px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .middleframe {
+            width: 955px;
+            padding: 3px;
+            border: 0px solid;
+        }
+        
+        #row2_col1 {
+            display: inline-block;
+            width: 300px;
+            height: 180px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
+            font-size: 60px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        #row2_col2 {
+            display: inline-block;
+            width: 300px;
+            height: 180px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
+            font-size: 60px;
+            text-align: center;
+            vertical-align: top;
+        }
+        
+        #row2_col3 {
+            display: inline-block;
+            width: 300px;
+            height: 180px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
+            font-size: 60px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .temp {
+            display: inline-block;
+            height: 190px;
+            text-align: right;
+            font-size: 180px;
+            font-weight: "bold";
+        }
+
+        .middleframe2 {
+            width: 955px;
+            padding: 3px;
             border: 0px solid;
         }
         
         #time {
             display: inline-block;
-            text-align: right;
+            width: 945px;
+            height: 180px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 3px;
             font-size: 180px;
-            width: 900px;
-            border: 0px solid;
+            text-align: center;
+            vertical-align: top;
             font-weight: "bold";
         }
 
-        #label {
-            display: inline-block;
-            text-align: right;
-            font-size: 90px;
-            width: 600px;
-            border: 0px solid;
-        }
-
-        #Indoor_Temp {
-            display: inline-block;
-            text-align: right;
-            font-size: 180px;
-            /* width: 250px; */
-            border: 0px solid;
-            font-weight: "bold";
-        }
-        
-        #Outdoor_Temp {
-            display: inline-block;
-            text-align: right;
-            font-size: 180px;
-            /* width: 250px; */
-            border: 0px solid;
-            font-weight: "bold";
-        }
-        
-        #tag {
-            display: inline-block;
-            text-align: left;
-            /* vertical-align: top; */
-            font-size: 90px;
-            width: 60px;
-            border: 0px solid;
-        }    
     </style>
 </head>
 <body onload="updateClock(); getUpdates(); setInterval( 'updateClock()', 60000 ); setInterval( 'getUpdates()', 60000 );">
-    <div class="Row"><span id="time"> </span></div>
-    <div class="Row"><span id="label">Indoor:</span><span id="Indoor_Temp"> </span><span id="tag">F</span></div>
-    <div class="Row"><span id="label">Outdoor:</span><span id="Outdoor_Temp"> </span><span id="tag">F</span></div>
-    
+    <div class="topframe">
+        <span id="row1_col1">Outdoor</span>
+        <span id="row1_col2"></span>
+        <span id="row1_col3">Indoor</span>
+    </div>
+
+    <div class="middleframe">
+        <span id="row2_col1"><span id="Outdoor_Temp" class="temp"></span>F</span>
+        <span id="row2_col2"></span>
+        <span id="row2_col3"><span id="Indoor_Temp" class="temp"></span>F</span>
+    </div>
+
+    <div class="middleframe2">
+        <span id="time"> </span>
+    </div>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
