@@ -87,10 +87,22 @@
             height: 200px;
             border: 2px solid;
             border-radius: 20px;
+            background-color: white;
             padding: 3px;
             font-size: 80px;
             text-align: center;
             vertical-align: top;
+        }
+        
+        #Weather {
+            border: 0px solid;
+            color: 000000;
+            font-family: Monaco, monospace;
+            font-size: 45px;
+        }
+        
+        #Conditions {
+            border: 0px solid;
         }
         
         #row2_col3 {
@@ -141,7 +153,7 @@
 
     <div class="middleframe">
         <span id="row2_col1"><span id="Outdoor_Temp" class="temp"></span>F</span>
-        <span id="row2_col2"></span>
+        <span id="row2_col2"><span id="Weather"></span></br><span id="Conditions"></span></span>
         <span id="row2_col3"><span id="Indoor_Temp" class="temp"></span>F</span>
     </div>
 
@@ -150,6 +162,7 @@
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
         function getUpdates() {
@@ -185,6 +198,22 @@
             var currentDateString = dt.getMonth() + "/" + dt.getDate() + "/" + dt.getFullYear();
             $( '#text_date' ).html(currentDateString);
         }
+        
+        jQuery(document).ready(function($) {
+            $.ajax({
+                url : "http://api.wunderground.com/api/86cffc836a1c0a6a/conditions/q/pws:KWAWOODI62.json",
+                dataType : "jsonp",
+                success : function(parsed_json) {
+                    var temp_f = parsed_json['current_observation']['temp_f'];
+                    
+                    var weather = parsed_json['current_observation']['weather'];
+                    $( '#Weather' ).html( weather );
+                    
+                    var icon_url = parsed_json['current_observation']['icon_url'];
+                    $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
+                }
+            });
+        });
     </script>
 </body>
 </html>
