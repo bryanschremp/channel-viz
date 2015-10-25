@@ -144,7 +144,7 @@
     </style>
     <meta http-equiv="refresh" content="300">
 </head>
-<body onload="updateClock(); getUpdates(); setInterval( 'updateClock()', 60000 ); setInterval( 'getUpdates()', 60000 );">
+<body onload="updateClock(); getTemps(); getWeather(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 300000 ); setInterval( 'getWeather()', 300000 );">
     <div class="topframe">
         <span id="row1_col1"><span id="text_outdoor">Outdoor</span></span>
         <span id="row1_col2"><span id="text_date"></span></span>
@@ -165,7 +165,7 @@
     
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
-        function getUpdates() {
+        function getTemps() {
             $.getJSON( 'http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function( data ) {
             if ( data.field1 ) { // If the field1 has data, update the page.
                     $( '#Indoor_Temp' ).html( data.field1 );
@@ -199,12 +199,12 @@
             $( '#text_date' ).html(currentDateString);
         }
         
-        jQuery(document).ready(function($) {
+        function getWeather() {
             $.ajax({
                 url : "http://api.wunderground.com/api/86cffc836a1c0a6a/conditions/q/pws:KWAWOODI62.json",
                 dataType : "jsonp",
                 success : function(parsed_json) {
-                    var temp_f = parsed_json['current_observation']['temp_f'];
+                    // var temp_f = parsed_json['current_observation']['temp_f'];
                     
                     var weather = parsed_json['current_observation']['weather'];
                     $( '#Weather' ).html( weather );
@@ -213,7 +213,7 @@
                     $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
