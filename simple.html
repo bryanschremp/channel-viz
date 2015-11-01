@@ -163,12 +163,11 @@
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    
     <script src="js/xivelyjs-1.0.0.min.js"></script>
     <script>
         function getTemps() {
             $.getJSON( 'http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function( data ) {
-            if ( data.field1 ) { // If the field1 has data, update the page.
+                if ( data.field1 ) { // If the field1 has data, update the page.
                     $( '#Indoor_Temp' ).html( data.field1 );
                 }           
             } );
@@ -182,6 +181,12 @@
 
         function updateClock() {
             var dt = new Date();
+            $.getJSON( 'http://timeapi.org/pdt/now.json?callback=?', function( data ) {
+                if ( data.dateString ) { // If the dateString has data, update the page.
+                    dt = Date(data.dateString);
+                }           
+            } );
+            
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();
             
@@ -196,10 +201,10 @@
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
             $( '#time' ).html(currentTimeString);
             
-            var currentDateString = dt.getMonth() + "/" + dt.getDate() + "/" + dt.getFullYear();
+            var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate() + "/" + dt.getFullYear();
             $( '#text_date' ).html(currentDateString);
         }
-        
+
         function getWeather() {
             $.ajax({
                 url : "http://api.wunderground.com/api/86cffc836a1c0a6a/conditions/q/pws:KWAWOODI62.json",
