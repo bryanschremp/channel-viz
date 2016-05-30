@@ -9,7 +9,7 @@
             font-family: "Digital-7 Mono", fixedsys, "Lucida Console", Monaco, monospace;
         }
 
-        .topframe {
+        #topframe {
             width: 1055px;
             padding: 3px;
             border: 0px solid;
@@ -63,7 +63,7 @@
             color: 00FF66;
         }
         
-        .middleframe {
+        #middleframe {
             width: 1055px;
             padding: 3px;
             border: 0px solid;
@@ -124,14 +124,14 @@
             font-size: 200px;
         }
 
-        .humidityFrame {
+        #humidityFrame {
             height: 100px;
             width: 1055px;
             padding: 3px;
             border: 0px solid;
         }
         
-        .timeFrame {
+        #timeFrame {
             height: 190px;
             width: 1055px;
             padding: 3px;
@@ -153,23 +153,23 @@
     <meta http-equiv="refresh" content="310">
 </head>
 <body onload="updateClock(); getTemps(); getWeather(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 300000 ); setInterval( 'getWeather()', 300000 );">
-    <div class="topframe">
+    <div id="topframe">
         <span id="row1_col1"><span id="text_outdoor">Outdoor</span></span>
         <span id="row1_col2"><span id="text_date"></span></span>
         <span id="row1_col3"><span id="text_indoor">Indoor</span></span>
     </div>
 
-    <div class="middleframe">
+    <div id="middleframe">
         <span id="row2_col1"><span id="Outdoor_Temp" class="temp"></span>F</span>
         <span id="row2_col2"><span id="Weather"></span></br><span id="Conditions"></span></span>
         <span id="row2_col3"><span id="Indoor_Temp" class="temp"></span>F</span>
     </div>
 
-    <div class="humidityFrame">
+    <div id="humidityFrame">
         <span id="time"> sfs</span>
     </div>
 
-    <div class=timeFrame">
+    <div id=timeFrame">
         <span id="time"> </span>
     </div>
     
