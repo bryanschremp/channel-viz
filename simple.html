@@ -72,7 +72,7 @@
         #row2_col1 {
             display: inline-block;
             width: 300px;
-            height: 200px;
+            height: 190px;
             border: 2px solid;
             border-radius: 20px;
             padding: 3px;
@@ -84,7 +84,7 @@
         #row2_col2 {
             display: inline-block;
             width: 400px;
-            height: 200px;
+            height: 190px;
             border: 2px solid;
             border-radius: 20px;
             background-color: white;
@@ -109,7 +109,7 @@
         #row2_col3 {
             display: inline-block;
             width: 300px;
-            height: 200px;
+            height: 190px;
             border: 2px solid;
             border-radius: 20px;
             padding: 3px;
@@ -119,7 +119,7 @@
         }
 
         .temp {
-            height: 200px;
+            height: 190px;
             text-align: right;
             font-size: 200px;
         }
@@ -133,7 +133,7 @@
         #time {
             display: inline-block;
             width: 1040px;
-            height: 200px;
+            height: 190px;
             border: 2px solid;
             border-radius: 20px;
             padding: 3px;
@@ -141,7 +141,6 @@
             text-align: center;
             vertical-align: top;
         }
-
     </style>
     <meta http-equiv="refresh" content="310">
 </head>
@@ -189,17 +188,6 @@
 
         function updateClock() {
             var dt = new Date();
-            // $( '#time1' ).html( 'Client time: ' + dt );
-            /*
-            var _dt = new Date( $.ajax({
-                url : "http://www.timeapi.org/pdt/now.json",
-                dataType : "jsonp",
-                success : function(parsed_json) {
-                    return parsed_json['dateString'];
-                }
-            }) );
-            $( '#time2' ).html( 'Server time: ' + _dt );
-            */
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();
             
@@ -223,8 +211,6 @@
                 url : "http://api.wunderground.com/api/86cffc836a1c0a6a/conditions/q/pws:KWAWOODI62.json",
                 dataType : "jsonp",
                 success : function(parsed_json) {
-                    // var temp_f = parsed_json['current_observation']['temp_f'];
-                    
                     var weather = parsed_json['current_observation']['weather'];
                     $( '#Weather' ).html( weather );
                     
