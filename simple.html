@@ -26,11 +26,7 @@
             text-align: center;
             vertical-align: top;
         }
-        
-        #text_outdoor {
-            color: FF9900;
-        }
-        
+
         #row1_col2 {
             display: inline-block;
             width: 400px;
@@ -42,11 +38,7 @@
             text-align: center;
             vertical-align: top;
         }
-        
-        #text_date {
-            color: 00CCFF;
-        }
-        
+
         #row1_col3 {
             display: inline-block;
             width: 300px;
@@ -57,10 +49,6 @@
             font-size: 80px;
             text-align: center;
             vertical-align: top;
-        }
-        
-        #text_indoor {
-            color: 00FF66;
         }
         
         #middleframe {
@@ -93,18 +81,6 @@
             vertical-align: top;
         }
         
-        #Weather {
-            border: 0px solid;
-            color: 000000;
-            font-family: Courier New;
-            font-weight: bold;
-            font-size: 50px;
-        }
-        
-        #Conditions {
-            border: 0px solid;
-        }
-        
         #row2_col3 {
             display: inline-block;
             width: 300px;
@@ -121,31 +97,25 @@
             text-align: right;
             font-size: 200px;
         }
-
-        #humidityFrame {
-            height: 90px;
-            width: 1055px;
-            padding: 3px;
-            border: 0px solid;
-        }
         
     </style>
     <meta http-equiv="refresh" content="310">
 </head>
 <body onload="updateClock(); getTemps(); getWeather(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 300000 ); setInterval( 'getWeather()', 300000 );">
     <div id="topframe">
-        <span id="row1_col1"><span id="text_outdoor">Outdoor</span></span>
-        <span id="row1_col2"><span id="text_date"></span></span>
-        <span id="row1_col3"><span id="text_indoor">Indoor</span></span>
+        <span id="row1_col1"><span id="text_outdoor" style="color: FF9900;">Outdoor</span></span>
+        <span id="row1_col2"><span id="text_date" style="color: 00CCFF;"></span></span>
+        <span id="row1_col3"><span id="text_indoor" style="color: 00FF66;">Indoor</span></span>
     </div>
 
     <div id="middleframe">
         <span id="row2_col1"><span id="Outdoor_Temp" class="temp"></span>F</span>
-        <span id="row2_col2"><span id="Weather"></span></br><span id="Conditions"></span></span>
+        <span id="row2_col2"><span id="Weather" style="border: 0px solid; color: 000000; font-family: Courier New; font-weight: bold; font-size: 50px;"></span>
+        </br><span id="Conditions" style="border: 0px solid;"></span></span>
         <span id="row2_col3"><span id="Indoor_Temp" class="temp"></span>F</span>
     </div>
 
-    <div id="humidityFrame" style="">
+    <div id="humidityFrame" style="height: 90px; width: 1055px; padding: 3px; border: 0px solid;">
         <span id="outdoorRH"> %</span>
         <span id="placeholder"> </span>
         <span id="indoorRH"> %</span>
