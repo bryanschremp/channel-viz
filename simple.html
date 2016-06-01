@@ -9,12 +9,6 @@
             font-family: "Digital-7 Mono", fixedsys, "Lucida Console", Monaco, monospace;
         }
 
-        #topframe {
-            width: 1055px;
-            padding: 3px;
-            border: 0px solid;
-        }
-        
         #row1_col1 {
             display: inline-block;
             width: 300px;
@@ -49,12 +43,6 @@
             font-size: 80px;
             text-align: center;
             vertical-align: top;
-        }
-        
-        #middleframe {
-            width: 1055px;
-            padding: 3px;
-            border: 0px solid;
         }
         
         #row2_col1 {
@@ -92,32 +80,27 @@
             vertical-align: top;
         }
 
-        .temp {
-            height: 190px;
-            text-align: right;
-            font-size: 200px;
-        }
-        
     </style>
     <meta http-equiv="refresh" content="310">
 </head>
 <body onload="updateClock(); getTemps(); getWeather(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 300000 ); setInterval( 'getWeather()', 300000 );">
-    <div id="topframe">
+    
+    <div id="topframe" style="width: 1055px; padding: 3px; border: 0px solid;">
         <span id="row1_col1"><span id="text_outdoor" style="color: FF9900;">Outdoor</span></span>
         <span id="row1_col2"><span id="text_date" style="color: 00CCFF;"></span></span>
         <span id="row1_col3"><span id="text_indoor" style="color: 00FF66;">Indoor</span></span>
     </div>
 
-    <div id="middleframe">
-        <span id="row2_col1"><span id="Outdoor_Temp" class="temp"></span>F</span>
+    <div id="middleframe" style="width: 1055px; padding: 3px; border: 0px solid;">
+        <span id="row2_col1"><span id="Outdoor_Temp" style="height: 190px; text-align: right; font-size: 200px;"></span>F</span>
         <span id="row2_col2"><span id="Weather" style="border: 0px solid; color: 000000; font-family: Courier New; font-weight: bold; font-size: 50px;"></span>
         </br><span id="Conditions" style="border: 0px solid;"></span></span>
-        <span id="row2_col3"><span id="Indoor_Temp" class="temp"></span>F</span>
+        <span id="row2_col3"><span id="Indoor_Temp" style="height: 190px; text-align: right; font-size: 200px;></span>F</span>
     </div>
 
-    <div id="humidityFrame" style="height: 90px; width: 1055px; padding: 3px; border: 0px solid;">
+    <div id="humidityFrame" style="width: 1055px; padding: 3px; border: 0px solid;">
         <span id="row3_col1"><span id="outdoorRH"></span>%</span>
-        <span id="row3_col2"><span id="placeholder"> </span>%</span>
+        <span id="row3_col2"><span id="placeholder"></span></span>
         <span id="row3_col3"><span id="indoorRH"> %</span>%</span>
     </div>
 
