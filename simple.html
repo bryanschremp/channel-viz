@@ -34,9 +34,7 @@
           margin: 0;
         }
         
-        /*
-         * Weather Widget
-         */
+        /* Weather Widget */
         .WeatherWidget {
           display: flex;
           flex-direction: column;
@@ -82,9 +80,12 @@
           font-size: 7em;
         }
 
-         /*
-         * DateWidget Widget
-         */
+        .WeatherWidget .Conditions-Text {
+          display: flex;
+          align-items: center;
+        }
+        
+         /* DateWidget Widget */
         .DateWidget {
           display: flex;
           flex-direction: column;
@@ -131,7 +132,9 @@
         </header>
         <div class="Widget-body">
             <p><span id="Outdoor_Temp"></span>F</p>
-            <div><span id="Weather"></span></div>
+            <div class="Conditions-Text">
+                <span id="Weather"></span>
+            </div>
         </div>
     </section>
     
