@@ -83,40 +83,30 @@
         }
 
          /*
-         * ConditionsWidget Widget
+         * DateWidget Widget
          */
-        .ConditionsWidget {
+        .DateWidget {
           display: flex;
           flex-direction: column;
           width: 300px;
           background: #68A691;
         }
 
-        .ConditionsWidget .Widget-header {
+        .DateWidget .Widget-header {
           flex: 1;
           display: flex;
           justify-content: center;
           align-items: center;
         }
 
-        .ConditionsWidget .Widget-body {
+        .DateWidget .Widget-body {
           flex: 2;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .ConditionsWidget-primaryIcon {
-          position: absolute;
-          top: -50px;
-          left: -50px;
-          height: 120px;
-          width: 120px;
-          z-index: 0;
-          opacity: .4;
-        }
-
-        .ConditionsWidget .Widget-headline {
+        .DateWidget .Widget-headline {
           font-size: 3em;
           z-index: 1;
         }
@@ -136,20 +126,21 @@
 <div class="Dashboard">
     <section class="Widget WeatherWidget">
         <header class="Widget-header">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/sun.svg" alt="" class="WeatherWidget-primaryIcon"/>      
+            <img id="Conditions" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/sun.svg" alt="" class="WeatherWidget-primaryIcon"/>      
             <h2 class="Widget-headline">Outdoor</h2>
         </header>
         <div class="Widget-body">
             <p><span id="Outdoor_Temp"></span>F</p>
+            <p><span id="Weather"></span></p>
         </div>
     </section>
     
-    <section class="Widget ConditionsWidget">
+    <section class="Widget DateWidget">
         <header class="Widget-header">      
             <h2 class="Widget-headline"><span id="text_date"></span></h2>
         </header>
         <div class="Widget-body">
-            <p><span id="Weather"></span></p>
+            <p><span id="time"></span></p>
         </div>
     </section>
     
@@ -168,7 +159,7 @@
         <span id="outdoorRH"></span>
         <span id="Conditions"></span>
         <span id="indoorRH"></span>
-        <span id="time"></span>
+        
     </section>
 </div>
 
