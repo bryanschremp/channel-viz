@@ -18,6 +18,7 @@
           flex-wrap: wrap;
           justify-content: center;
         }
+        
         // General widget styles
         .Widget {
           margin: 10px;
@@ -108,9 +109,20 @@
             <h2 class="Widget-headline">Outdoor</h2>
         </header>
         <div class="Widget-body">
-            <p><span id="Outdoor_Temp" class="bigText"></p>
+            <p><span id="Outdoor_Temp" class="bigText"></span>F</p>
         </div>
     </section>
+    <section class="Widget WeatherWidget">
+        <header class="Widget-header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/sun.svg" alt="" class="WeatherWidget-primaryIcon"/>      
+            <h2 class="Widget-headline">Indoor</h2>
+        </header>
+        <div class="Widget-body">
+            <p><span id="Indoor_Temp" class="bigText"></span>F</p>
+        </div>
+    </section>
+    </br>
+    
     <div class="row-1 col-1"><span id="text_outdoor" style="color: #FF9900;">Outdoor</span></br><span id="Outdoor_Temp" class="bigText"></span>F</div>
     
     <div class="row-1 col-2"><span id="text_date" style="color: #0404A9;"></span></br>
