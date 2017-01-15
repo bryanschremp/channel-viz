@@ -97,13 +97,9 @@
 
         .ConditionsWidget .Widget-header {
           position: relative;
-          /* 
-          You can use text-align: right, but flexbox
-          gives you more control with varied content 
-          */
           display: flex;
           justify-content: flex-end;
-          overflow: hidden; // Eat the icon
+          overflow: hidden;
           padding: 10px;
         }
 
@@ -129,7 +125,7 @@
         }
 
         .ConditionsWidget .Widget-body {
-          flex: 1; // Take up all available space
+          flex: 1;
           background: darken(#5CC8E5, 8%);
           padding: 20px;
           font-weight: 300;
@@ -144,14 +140,14 @@
             text-align: center; 
         }
         
-        [class*="col-"] { float: left; }
+        /* [class*="col-"] { float: left; } */
         
-        .col-1 { width: 30%; }
+        /* .col-1 { width: 30%; }
         .col-2 { width: 40%; background-color: #FFFFFF; }
         .col-3 { width: 30%; }
-        .col-4 { width: 100%; }
-        .bigText { font-size: 190px; }
-        .middle { font-size: 85px; color: #000000; }
+        .col-4 { width: 100%; } */
+        /*.bigText { font-size: 190px; } */
+        /*.middle { font-size: 85px; color: #000000; } */
         
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
@@ -187,10 +183,17 @@
         </div>
     </section>   
 
-    <div class=""><span id="text_date" style="color: #0404A9;"></span></br>
-        <span class="" id="Weather" style="font-family: Courier New; font-weight: bold; font-size: 45px;"></span></br>
-        <span class="" id="outdoorRH"></span><span class="middle" id="Conditions"></span><span class="middle" id="indoorRH"></span></div>
-    <div class=""><span id="time" class="bigText"></span></div>
+    <section>
+        <span id="text_date"></span></br>
+        <span id="Weather"></span></br>
+        <span id="outdoorRH"></span>
+        <span id="Conditions"></span>
+        <span id="indoorRH"></span>
+    </section>
+    
+    <section>
+        <span id="time"></span>
+    </section>
 </div>
 
     <script src='http://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
