@@ -1,10 +1,28 @@
 <html><head><title>Home Temps</title>
     <meta http-equiv="refresh" content="5000"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-        body { color: #FFFFFF; background-color: #000000; font-family: "Digital-7 Mono", fixedsys, "Lucida Console" }
-        * { box-sizing: border-box; }
-        [class*="row-"] { font-size: 80px; padding: 3px; border-radius: 20px; border: 2px solid; text-align: center; }
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+        
+        body { 
+            color: #FFFFFF; 
+            background-color: #000000; 
+            font-family: "Merriweather Sans', sans-serif, Digital-7 Mono", fixedsys, "Lucida Console";
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        [class*="row-"] { 
+            font-size: 80px; 
+            padding: 3px; 
+            border-radius: 20px; 
+            border: 2px solid; 
+            text-align: center; 
+        }
+        
         [class*="col-"] { float: left; }
+        
         .col-1 { width: 30%; }
         .col-2 { width: 40%; background-color: #FFFFFF; }
         .col-3 { width: 30%; }
@@ -20,26 +38,11 @@
         <span class="middle" id="outdoorRH"></span><span class="middle" id="Conditions"></span><span class="middle" id="indoorRH"></span></div>
     <div class="row-1 col-3"><span id="text_indoor"  style="color: 00FF66;">Indoor</span></br><span id="Indoor_Temp" class="bigText"></span>F</div>
     <div class="row-3 col-4"><span id="time" class="bigText"></span></div>
-    <div class="row-4 col-4"><div id="openweathermap-widget"></div></div>
+    <div class="row-4 col-4"></div>
     <script src='http://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/xivelyjs-1.0.0.min.js"></script>
-    <script>
-        window.myWidgetParam = {
-                        id: 11,
-                        cityid: 5816449,
-                        appid: '200b019fa693c30726c42c0246ba3977',
-                        containerid: 'openweathermap-widget',
-                    };
-                    (function() {
-                        var script = document.createElement('script');
-                        script.type = 'text/javascript';
-                        script.async = true;
-                        script.src = 'http://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(script, s);
-                    })();
-        
+    <script>        
         function getTemps() {
             $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
                 if(data.field1) { // If the field1 has data, update the page.
