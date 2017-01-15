@@ -84,7 +84,58 @@
           font-weight: 300;
           font-size: 5em;
         }
-        
+
+         /*
+         * ConditionsWidget Widget
+         */
+        .ConditionsWidget {
+          display: flex;
+          flex-direction: column;
+          width: 300px;
+          background: #5CC8E5;
+        }
+
+        .ConditionsWidget .Widget-header {
+          position: relative;
+          /* 
+          You can use text-align: right, but flexbox
+          gives you more control with varied content 
+          */
+          display: flex;
+          justify-content: flex-end;
+          overflow: hidden; // Eat the icon
+          padding: 10px;
+        }
+
+        .ConditionsWidget .Widget-body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .ConditionsWidget-primaryIcon {
+          position: absolute;
+          top: -50px;
+          left: -50px;
+          height: 120px;
+          width: 120px;
+          z-index: 0;
+          opacity: .4;
+        }
+
+        .ConditionsWidget .Widget-headline {
+          font-size: 3em;
+          z-index: 1;
+        }
+
+        .ConditionsWidget .Widget-body {
+          flex: 1; // Take up all available space
+          background: darken(#5CC8E5, 8%);
+          padding: 20px;
+          font-weight: 300;
+          font-size: 5em;
+        }
+ 
         [class*="row-"] { 
             font-size: 80px; 
             padding: 3px; 
