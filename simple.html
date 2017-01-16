@@ -127,7 +127,7 @@
 <div class="Dashboard">
     <section class="Widget WeatherWidget">
         <header class="Widget-header">
-            <img id="Conditions" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/sun.svg" alt="" class="WeatherWidget-primaryIcon"/>      
+            <img id="Conditions" src="" alt="" class="WeatherWidget-primaryIcon"/>      
             <h2 class="Widget-headline">Outdoor</h2>
         </header>
         <div class="Widget-body">
@@ -212,11 +212,11 @@
                 dataType : "jsonp",
                 success : function(parsed_json) {
                     var weather = parsed_json['current_observation']['weather'];
-                    $( '#Weather' ).html( weather );
+                    $('#Weather').html(weather);
                     
                     var icon_url = parsed_json['current_observation']['icon_url'];
                     // $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
-                    $( '#Conditions' ).src(icon_url);
+                    $('#Conditions').src(icon_url);
                 }
             });
         }
