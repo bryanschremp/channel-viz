@@ -117,7 +117,7 @@
           background: darken(#5CC8E5, 8%);
           padding: 20px;
           font-weight: 300;
-          font-size: 7em;
+          font-size: 5em;
         }
  
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
@@ -215,7 +215,8 @@
                     $( '#Weather' ).html( weather );
                     
                     var icon_url = parsed_json['current_observation']['icon_url'];
-                    $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
+                    // $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
+                    $( '#Conditions' ).src(icon_url);
                 }
             });
         }
