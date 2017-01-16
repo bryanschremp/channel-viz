@@ -216,7 +216,7 @@
                     
                     var icon_url = parsed_json['current_observation']['icon_url'];
                     // $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
-                    $('#Conditions').src(icon_url);
+                    $('#Conditions').attr("src", icon_url);
                 }
             });
         }
