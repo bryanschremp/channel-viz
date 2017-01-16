@@ -81,6 +81,7 @@
         }
 
         .WeatherWidget .Conditions-Text {
+          flex: 1;
           display: flex;
           align-items: center;
         }
@@ -143,7 +144,7 @@
             <h2 class="Widget-headline"><span id="text_date"></span></h2>
         </header>
         <div class="Widget-body">
-            <p><span id="time"></span></p>
+            <p></p>
         </div>
     </section>
     
@@ -159,10 +160,9 @@
     <p></p>
     
     <section>
+        <span id="time"></span>
         <span id="outdoorRH"></span>
-        <span id="Conditions"></span>
-        <span id="indoorRH"></span>
-        
+        <span id="indoorRH"></span>      
     </section>
 </div>
 
@@ -174,14 +174,14 @@
             $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
                 if(data.field1) { // If the field1 has data, update the page.
                     $('#Indoor_Temp').html(data.field1);
-                    $('#indoorRH').html(data.field2 + '%');
+                    // $('#indoorRH').html(data.field2 + '%');
                 }           
             } );
             
             $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data)  {
                 if(data.field1) { // If the field1 has data, update the page.
                     $('#Outdoor_Temp').html(parseInt(data.field1));
-                    $('#outdoorRH').html(parseInt(data.field2) + '%');
+                    // $('#outdoorRH').html(parseInt(data.field2) + '%');
                 }           
             } );
         }
