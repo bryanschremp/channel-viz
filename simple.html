@@ -7,27 +7,28 @@
         }
         
         body { 
-              padding: 20px 40px 80px;
-              font-family: 'Merriweather Sans', sans-serif;
-              color: ghostwhite;
-              -webkit-font-smoothing: antialiased;
-              text-rendering: optimizeLegibility;
+            padding: 20px 40px 80px;
+            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/tiny_grid.png);
+            font-family: 'Merriweather Sans', sans-serif;
+            color: ghostwhite;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
         
         .Dashboard {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .Widget {
-          margin: 10px;
-          box-shadow: 3px 3px 8px #333;
-          text-align: center;
+            margin: 10px;
+            box-shadow: 3px 3px 8px #333;
+            text-align: center;
         }
 
         .Widget-header {
-          padding: 10px 20px;
+            padding: 10px 20px;
         }
 
         .Widget-headline {
@@ -64,7 +65,7 @@
           height: 125px;
           width: 125px;
           z-index: 1;
-          /* opacity: .4; */
+          opacity: .4;
         }
 
         .WeatherWidget .Widget-headline {
@@ -102,7 +103,7 @@
         }
 
         .DateWidget .Widget-body {
-          flex: 2;
+          flex: 1;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -125,7 +126,7 @@
         .TimeWidget {
           display: flex;
           flex-direction: column;
-          width:1000px;
+          width:1050px;
           height: 300px;
           background: #68A691;
         }
