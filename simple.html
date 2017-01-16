@@ -120,7 +120,43 @@
           font-weight: 300;
           font-size: 5em;
         }
- 
+        
+         /* TimeWidget Widget */
+        .DateWidget {
+          display: flex;
+          flex-direction: column;
+          width: 300px;
+          background: #68A691;
+        }
+
+        .TimeWidget .Widget-header {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .TimeWidget .Widget-body {
+          flex: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 10em;
+        }
+
+        .TimeWidget .Widget-headline {
+          font-size: 3em;
+          z-index: 1;
+        }
+
+        .TimeWidget .Widget-body {
+          flex: 1;
+          background: darken(#5CC8E5, 8%);
+          padding: 20px;
+          font-weight: 300;
+          font-size: 5em;
+        }
+        
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
 </head>
@@ -153,14 +189,17 @@
             <p><span id="Indoor_Temp"></span>F</p>
         </div>
     </section>
-    
-    <p></p>
+
+    <section class="Widget TimeWidget">
+        <header class="Widget-header">      
+            <h2 class="Widget-headline"><span id="time"></span></h2>
+        </header>
+    </section>
     
     <section>
-        <span id="time"></span>
         <span id="outdoorRH"></span>
         <span id="indoorRH"></span>  
-                    <div class="Conditions-Text">
+         <div class="Conditions-Text">
                 <span id="Weather"></span>
             </div>
     </section>
