@@ -123,15 +123,15 @@
         }
 
         .DateWidget .Widget-headline {
-          font-size: 4em;
+          font-size: 5em;
         }
 
         .DateWidget .Widget-body {
           flex: 1;
           background: darken(#5CC8E5, 8%);
           padding: 20px;
-          font-weight: 300;
-          font-size: 4em;
+          font-weight: 700;
+          font-size: 8em;
         }
         
          /* TimeWidget Widget */
@@ -172,10 +172,10 @@
     
     <section class="Widget DateWidget">
         <header class="Widget-header">      
-            <h2 class="Widget-headline"><span id="text_date"></span></h2>
+            <h2 class="Widget-headline"><span id="text_day"></span></h2>
         </header>
         <div class="Widget-body">
-            <p></p>
+            <p><span id="text_date"></span></p>
         </div>
     </section>
     
@@ -230,16 +230,24 @@
             
             // Pad the minutes and seconds with leading zeros, if required
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+            
             // Choose either "AM" or "PM" as appropriate
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+            
             // Convert the hours component to 12-hour format if needed
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+            
             // Convert an hours component of "0" to "12"
             currentHours = (currentHours == 0) ? 12 : currentHours;
+            
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
             $( '#time' ).html(currentTimeString);
             
-            var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+            var d = new Date();
+            var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            $( '#text_day' ).html(days[d.getDay()]);
+            
+            var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
             $( '#text_date' ).html(currentDateString);
         }
 
