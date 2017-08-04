@@ -220,7 +220,7 @@
             
             $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data)  {
                 if(data.field1) { // If the field1 has data, update the page.
-                    $('#Outdoor_Temp').html(parseInt(data.field1.substr(0, 4)));
+                    $('#Outdoor_Temp').html(data.field1.substr(0, 4));
                     console.log(data.field1.substr(0, 4));
                     // $('#outdoorRH').html(parseInt(data.field2) + '%');
                 }           
