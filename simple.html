@@ -98,7 +98,7 @@
           vertical-align: top;
         }
         
-         /* DateWidget Widget */
+        /* DateWidget Widget */
         .DateWidget {
           display: flex;
           flex-direction: column;
@@ -132,7 +132,7 @@
           font-size: 7em;
         }
         
-         /* TimeWidget Widget */
+        /* TimeWidget Widget */
         .TimeWidget {
           display: flex;
           width: 1200px;
@@ -156,7 +156,7 @@
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
 </head>
-<body onload="updateClock(); getTemps(); getWeather(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 300000 ); setInterval( 'getWeather()', 3000000 );">
+<body onload="updateClock(); getTemps(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 300000 );">
 <div class="Dashboard">
     <section class="Widget WeatherWidget">
         <header class="Widget-header">
@@ -200,60 +200,58 @@
             </div>
     </section> -->
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/xivelyjs-1.0.0.min.js"></script>
+<script>        
+    function getTemps() {
+        $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
+            if(data.field1) { // If the field1 has data, update the page.
+                $('#Indoor_Temp').html(data.field1.substr(0, 4));
+                console.log(data.field1.substr(0, 4));
+                //$('#Outdoor_Temp').html(parseInt(data.field5.substr(0, 4)));
+                // Console.Log(data.field5.substr(0, 4));
+                // $('#indoorRH').html(data.field2 + '%');
+            }           
+        } );
+        
+        $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data)  {
+            if(data.field1) { // If the field1 has data, update the page.
+                $('#Outdoor_Temp').html(data.field1.substr(0, 4));
+                console.log(data.field1.substr(0, 4));
+                // $('#outdoorRH').html(parseInt(data.field2) + '%');
+            }           
+        } );
+      
+    }
 
-    <script src='http://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="js/xivelyjs-1.0.0.min.js"></script>
-    <script>        
-        function getTemps() {
-            $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
-                if(data.field1) { // If the field1 has data, update the page.
-                    $('#Indoor_Temp').html(data.field1.substr(0, 4));
-                    console.log(data.field1.substr(0, 4));
-                    //$('#Outdoor_Temp').html(parseInt(data.field5.substr(0, 4)));
-                    // Console.Log(data.field5.substr(0, 4));
-                    // $('#indoorRH').html(data.field2 + '%');
-                }           
-            } );
-            
-            $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data)  {
-                if(data.field1) { // If the field1 has data, update the page.
-                    $('#Outdoor_Temp').html(data.field1.substr(0, 4));
-                    console.log(data.field1.substr(0, 4));
-                    // $('#outdoorRH').html(parseInt(data.field2) + '%');
-                }           
-            } );
-          
-        }
-
-        function updateClock() {
-            var dt = new Date();
-            var currentHours = dt.getHours();
-            var currentMinutes = dt.getMinutes();
-            
-            // Pad the minutes and seconds with leading zeros, if required
-            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-            
-            // Choose either "AM" or "PM" as appropriate
-            var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-            
-            // Convert the hours component to 12-hour format if needed
-            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-            
-            // Convert an hours component of "0" to "12"
-            currentHours = (currentHours == 0) ? 12 : currentHours;
-            
-            var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
-            $( '#time' ).html(currentTimeString);
-            
-            var d = new Date();
-            var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-            $( '#text_day' ).html(days[d.getDay()]);
-            
-            var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
-            $( '#text_date' ).html(currentDateString);
-        }
-
+    function updateClock() {
+        var dt = new Date();
+        var currentHours = dt.getHours();
+        var currentMinutes = dt.getMinutes();
+        
+        // Pad the minutes and seconds with leading zeros, if required
+        currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+        
+        // Choose either "AM" or "PM" as appropriate
+        var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+        
+        // Convert the hours component to 12-hour format if needed
+        currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+        
+        // Convert an hours component of "0" to "12"
+        currentHours = (currentHours == 0) ? 12 : currentHours;
+        
+        var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
+        $( '#time' ).html(currentTimeString);
+        
+        var d = new Date();
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        $( '#text_day' ).html(days[d.getDay()]);
+        
+        var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
+        $( '#text_date' ).html(currentDateString);
+    }
+/*
         function getWeather() {
             $.ajax({
                 url : "http://api.wunderground.com/api/86cffc836a1c0a6a/conditions/q/pws:KWAWOODI62.json",
@@ -268,6 +266,7 @@
                 }
             });
         }
-    </script>
+*/
+</script>
 </body>
 </html>
