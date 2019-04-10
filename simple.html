@@ -160,7 +160,6 @@
 <div class="Dashboard">
     <section class="Widget WeatherWidget">
         <header class="Widget-header">
-            <!-- <img id="Conditions" src="http://icons.wxug.com/i/c/k/nt_clear.gif" alt="" class="WeatherWidget-primaryIcon"/> -->     
             <h2 class="Widget-headline">Outdoor</h2>
         </header>
         <div class="Widget-body">
@@ -200,28 +199,23 @@
             </div>
     </section> -->
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="js/xivelyjs-1.0.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="js/xivelyjs-1.0.0.min.js"></script> -->
 <script>        
     function getTemps() {
         $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
-            if(data.field3) { // If the field1 has data, update the page.
+            if(data.field3) {
                 $('#Indoor_Temp').html(data.field3.substr(0, 4));
                 console.log(data.field3.substr(0, 4));
-                //$('#Outdoor_Temp').html(parseInt(data.field5.substr(0, 4)));
-                // Console.Log(data.field5.substr(0, 4));
-                // $('#indoorRH').html(data.field2 + '%');
             }           
-        } );
+        });
         
         $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data)  {
-            if(data.field1) { // If the field1 has data, update the page.
+            if(data.field1) {
                 $('#Outdoor_Temp').html(data.field1.substr(0, 4));
                 console.log(data.field1.substr(0, 4));
-                // $('#outdoorRH').html(parseInt(data.field2) + '%');
             }           
         } );
-      
     }
 
     function updateClock() {
@@ -251,22 +245,6 @@
         var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
         $( '#text_date' ).html(currentDateString);
     }
-/*
-        function getWeather() {
-            $.ajax({
-                url : "http://api.wunderground.com/api/86cffc836a1c0a6a/conditions/q/pws:KWAWOODI62.json",
-                dataType : "jsonp",
-                success : function(parsed_json) {
-                    var weather = parsed_json['current_observation']['weather'];
-                    $('#Weather').html(weather);
-                    
-                    var icon_url = parsed_json['current_observation']['icon_url'];
-                    // $( '#Conditions' ).html('<img src="' + icon_url + '" width=125 height=125>' );
-                    $('#Conditions').attr("src", icon_url);
-                }
-            });
-        }
-*/
 </script>
 </body>
 </html>
