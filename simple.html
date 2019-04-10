@@ -166,13 +166,23 @@
         });
         
         function getTemps() {
+             $.ajax({
+                url: "http://api.thingspeak.com/channels/33195/fields/3.json?results=1",
+                dataType: "jsonp",
+                success: function( response ) {
+                    $('#Indoor_Temp').html(data.feeds.field3.substr(0, 4));
+                    console.log( response ); // server response
+                }
+            });           
+            /*
             $.getJSON('http://api.thingspeak.com/channels/33195/fields/3.json?results=1?callback=?', function(data) {
                 if(data) {
                     // $('#Indoor_Temp').html(data.feeds.field3.substr(0, 4));
                     console.log(data);
                 }
             });
-
+            */
+            
             $.getJSON('http://api.thingspeak.com/channels/21626/fields/1.json?results=1?callback=?', function(data) {
                 if(data) {
                     // $('#Outdoor_Temp').html(data.field1.substr(0, 4));
