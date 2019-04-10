@@ -155,8 +155,61 @@
         
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            updateClock();
+            getTemps();
+            setInterval('updateClock()', 60000);
+            setInterval('getTemps()', 120000);
+        });
+        
+        function getTemps() {
+            $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
+                if(data.field3) {
+                    $('#Indoor_Temp').html(data.field3.substr(0, 4));
+                    console.log(data.field3);
+                }
+            });
+
+            $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data) {
+                if(data.field1) {
+                    $('#Outdoor_Temp').html(data.field1.substr(0, 4));
+                    console.log(data.field1);
+                }
+            });
+        }
+
+        function updateClock() {
+            var dt = new Date();
+            var currentHours = dt.getHours();
+            var currentMinutes = dt.getMinutes();
+
+            // Pad the minutes and seconds with leading zeros, if required
+            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+
+            // Choose either "AM" or "PM" as appropriate
+            var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+
+            // Convert the hours component to 12-hour format if needed
+            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+
+            // Convert an hours component of "0" to "12"
+            currentHours = (currentHours == 0) ? 12 : currentHours;
+
+            var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
+            $( '#time' ).html(currentTimeString);
+
+            var d = new Date();
+            var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            $( '#text_day' ).html(days[d.getDay()]);
+
+            var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
+            $( '#text_date' ).html(currentDateString);
+        }
+    </script>
 </head>
-<body onload="updateClock(); getTemps(); setInterval( 'updateClock()', 60000 ); setInterval( 'getTemps()', 120000 );">
+<body>
 <div class="Dashboard">
     <section class="Widget WeatherWidget">
         <header class="Widget-header">
@@ -199,52 +252,5 @@
             </div>
     </section> -->
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="js/xivelyjs-1.0.0.min.js"></script> -->
-<script>        
-    function getTemps() {
-        $.getJSON('http://api.thingspeak.com/channels/33195/feed/last.json?callback=?', function(data) {
-            if(data.field3) {
-                $('#Indoor_Temp').html(data.field3.substr(0, 4));
-                console.log(data.field3.substr(0, 4));
-            }           
-        });
-        
-        $.getJSON('http://api.thingspeak.com/channels/21626/feed/last.json?callback=?', function(data)  {
-            if(data.field1) {
-                $('#Outdoor_Temp').html(data.field1.substr(0, 4));
-                console.log(data.field1.substr(0, 4));
-            }           
-        } );
-    }
-
-    function updateClock() {
-        var dt = new Date();
-        var currentHours = dt.getHours();
-        var currentMinutes = dt.getMinutes();
-        
-        // Pad the minutes and seconds with leading zeros, if required
-        currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-        
-        // Choose either "AM" or "PM" as appropriate
-        var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-        
-        // Convert the hours component to 12-hour format if needed
-        currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-        
-        // Convert an hours component of "0" to "12"
-        currentHours = (currentHours == 0) ? 12 : currentHours;
-        
-        var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
-        $( '#time' ).html(currentTimeString);
-        
-        var d = new Date();
-        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        $( '#text_day' ).html(days[d.getDay()]);
-        
-        var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
-        $( '#text_date' ).html(currentDateString);
-    }
-</script>
 </body>
 </html>
