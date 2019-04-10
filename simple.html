@@ -169,37 +169,21 @@
              $.ajax({
                 url: "http://api.thingspeak.com/channels/33195/fields/3.json?results=1",
                 dataType: "jsonp",
-                success: function( data ) {
-                    console.log( data ); // server response
-                    $('#Indoor_Temp').html(data.feeds[0].field3);
-                }
-            });
-            /*
-            $.getJSON('http://api.thingspeak.com/channels/33195/fields/3.json?results=1?callback=?', function(data) {
-                if(data) {
-                    // $('#Indoor_Temp').html(data.feeds.field3.substr(0, 4));
+                success: function(data) {
                     console.log(data);
+                    $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
                 }
             });
-           
-            
+                       
             $.ajax({
                 url: "http://api.thingspeak.com/channels/21626/fields/1.json?results=1",
                 dataType: "jsonp",
-                success: function( data ) {
-                    console.log( data ); // server response
-                    $('#Outdoor_Temp).html(data.feeds[0].field1);
-                }
-            });
-            */
-            /*
-            $.getJSON('http://api.thingspeak.com/channels/21626/fields/1.json?results=1?callback=?', function(data) {
-                if(data) {
-                    // $('#Outdoor_Temp').html(data.field1.substr(0, 4));
+                success: function(data) {
                     console.log(data);
+                    //$('#Outdoor_Temp ).html(data.feeds[0].field1);
+                    $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4));
                 }
             });
-            */
         }
 
         function updateClock() {
