@@ -181,7 +181,7 @@
                     console.log(data);
                 }
             });
-            */
+           
             
             $.ajax({
                 url: "http://api.thingspeak.com/channels/21626/fields/1.json?results=1",
@@ -191,6 +191,7 @@
                     $('#Outdoor_Temp).html(data.feeds[0].field1);
                 }
             });
+            */
             /*
             $.getJSON('http://api.thingspeak.com/channels/21626/fields/1.json?results=1?callback=?', function(data) {
                 if(data) {
