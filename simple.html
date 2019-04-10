@@ -170,8 +170,8 @@
                 url: "http://api.thingspeak.com/channels/33195/fields/3.json?results=1",
                 dataType: "jsonp",
                 success: function( data ) {
-                    $('#Indoor_Temp').html(data.feeds.field3.substr(0, 4));
                     console.log( data ); // server response
+                    $('#Indoor_Temp').html(data.feeds.field3);
                 }
             });           
             /*
