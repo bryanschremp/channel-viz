@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head><title>Home Temps</title>
     <meta http-equiv="refresh" content="600">
@@ -165,18 +166,17 @@
         });
         
         function getTemps() {
-            $.getJSON('https://api.thingspeak.com/channels/33195/fields/3.json?results=1?callback=?', function(data) {
-                console.log(data);
+            $.getJSON('http://api.thingspeak.com/channels/33195/fields/3.json?results=1?callback=?', function(data) {
                 if(data) {
-                    $('#Indoor_Temp').html(data.feeds.field3.substr(0, 4));
+                    // $('#Indoor_Temp').html(data.feeds.field3.substr(0, 4));
                     console.log(data);
                 }
             });
 
             $.getJSON('http://api.thingspeak.com/channels/21626/fields/1.json?results=1?callback=?', function(data) {
                 if(data) {
-                    $('#Outdoor_Temp').html(data.field1.substr(0, 4));
-                    console.log(data.field1);
+                    // $('#Outdoor_Temp').html(data.field1.substr(0, 4));
+                    console.log(data);
                 }
             });
         }
