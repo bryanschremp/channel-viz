@@ -79,7 +79,8 @@
 
         .WeatherWidget .Widget-body {
           flex: 1;
-          /* background: darken(#5CC8E5, 8%); */
+          /* */
+          background: darken(#5CC8E5, 8%);
           background-color:rgb(0, 0, 50);
           padding: 20px;
           font-weight: 700;
@@ -172,6 +173,7 @@
                 success: function(data) {
                     console.log(data);
                     $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
+                    $('#indoorRH').html(data.feeds[1].field3.substr(0, 4));
                 }
             });
                        
@@ -250,13 +252,13 @@
         </header>
     </section>
     
-    <!-- <section>
+    <section>
         <span id="outdoorRH"></span>
-        <span id="indoorRH"></span>  
+        <span id="indoorRH"></span>
          <div class="Conditions-Text">
                 <span id="Weather"></span>
             </div>
-    </section> -->
+    </section>
 </div>
 </body>
 </html>
