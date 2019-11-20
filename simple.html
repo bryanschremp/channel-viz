@@ -171,7 +171,8 @@
                 url: "http://api.thingspeak.com/channels/33195/fields/3.json?results=1",
                 dataType: "jsonp",
                 success: function(data) {
-                    console.log(data);
+                    console.log(data.feeds[0].field3);
+                    console.log(data.feeds[0].field2);
                     $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
                     $('#indoorRH').html(data.feeds[0].field2);
                 }
@@ -181,7 +182,7 @@
                 url: "http://api.thingspeak.com/channels/21626/fields/1.json?results=1",
                 dataType: "jsonp",
                 success: function(data) {
-                    console.log(data);
+                    console.log((data.feeds[0].field1);
                     //$('#Outdoor_Temp ).html(data.feeds[0].field1);
                     $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4));
                 }
@@ -192,26 +193,19 @@
             var dt = new Date();
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();
-
             // Pad the minutes and seconds with leading zeros, if required
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-
             // Choose either "AM" or "PM" as appropriate
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-
             // Convert the hours component to 12-hour format if needed
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-
             // Convert an hours component of "0" to "12"
             currentHours = (currentHours == 0) ? 12 : currentHours;
-
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
             $( '#time' ).html(currentTimeString);
-
             var d = new Date();
             var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
             $( '#text_day' ).html(days[d.getDay()]);
-
             var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
             $( '#text_date' ).html(currentDateString);
         }
