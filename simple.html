@@ -169,13 +169,12 @@
         function getTemps() {
              $.ajax({
                  url: "https://api.thingspeak.com/channels/33195/feeds.json?results=2",
-                 // url: "http://api.thingspeak.com/channels/33195/fields/3.json?results=1",
                 dataType: "jsonp",
                 success: function(data) {
                     console.log(data.feeds[0].field3);
                     console.log(data.feeds[0].field2);
                     $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
-                    $('#indoorRH').html(data.feeds[0].field2);
+                    $('#indoorRH').html(data.feeds[0].field2.substr(0, 4));
                 }
             });
                        
@@ -235,7 +234,7 @@
             <h2 class="Widget-headline">Indoor</h2>
         </header>
         <div class="Widget-body">
-            <span id="Indoor_Temp"></span><span class="Widget-f">F</span>
+            <span id="Indoor_Temp"></span><span class="Widget-f">F</span><br>
             <span id="indoorRH"></span><span class="Widget-f">%</span>
         </div>
     </section>
