@@ -173,7 +173,7 @@
                 success: function(data) {
                     console.log(data);
                     $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
-                    $('#indoorRH').html(data.feeds[1].field3.substr(0, 4));
+                    $('#indoorRH').html(data.feeds[1].field2.substr(0, 4));
                 }
             });
                        
