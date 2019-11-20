@@ -171,8 +171,8 @@
                 url: "http://api.thingspeak.com/channels/33195/fields/3.json?results=1",
                 dataType: "jsonp",
                 success: function(data) {
-                    console.log(data);
-                    console.log(data.feeds[0].field2.value);
+                    console.log(data.feeds[0].field3);
+                    console.log(data.feeds[0].field2);
                     $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
                     $('#indoorRH').html(data.feeds[0].field2);
                 }
@@ -182,7 +182,7 @@
                 url: "http://api.thingspeak.com/channels/21626/fields/1.json?results=1",
                 dataType: "jsonp",
                 success: function(data) {
-                    console.log((data);
+                    console.log(data.feeds[0].field1);
                     //$('#Outdoor_Temp ).html(data.feeds[0].field1);
                     $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4));
                 }
