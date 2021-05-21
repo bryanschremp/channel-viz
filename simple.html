@@ -26,10 +26,10 @@
                  url: "https://api.thingspeak.com/channels/33195/feeds.json?results=2",
                 dataType: "json",
                 success: function(data) {
-                    console.log(data.feeds[0].field3);
-                    console.log(data.feeds[0].field2);
+                    // console.log(data.feeds[0].field3);
+                    // console.log(data.feeds[0].field2);
                     $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
-                    $('#indoorRH').html(data.feeds[0].field2.substr(0, 2));
+                    // $('#indoorRH').html(data.feeds[0].field2.substr(0, 2));
                 }
             });
                        
@@ -37,8 +37,7 @@
                 url: "https://api.thingspeak.com/channels/21626/fields/1.json?results=1",
                 dataType: "json",
                 success: function(data) {
-                    console.log(data.feeds[0].field1);
-                    //$('#Outdoor_Temp ).html(data.feeds[0].field1);
+                    // console.log(data.feeds[0].field1);
                     $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4));
                 }
             });
@@ -47,15 +46,11 @@
         function updateClock() {
             var dt = new Date();
             var currentHours = dt.getHours();
-            var currentMinutes = dt.getMinutes();
-            // Pad the minutes and seconds with leading zeros, if required
-            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-            // Choose either "AM" or "PM" as appropriate
+            var currentMinutes = dt.getMinutes();        
+            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes; // Pad the minutes and seconds with leading zeros.
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-            // Convert the hours component to 12-hour format if needed
-            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-            // Convert an hours component of "0" to "12"
-            currentHours = (currentHours == 0) ? 12 : currentHours;
+            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours; // Convert the hours component to 12-hour format.
+            currentHours = (currentHours == 0) ? 12 : currentHours; // Convert an hours component of "0" to "12".
             var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
             $( '#time' ).html(currentTimeString);
             var d = new Date();
@@ -67,17 +62,16 @@
     </script>
 </head>
 <body>
-<table style="width:90%; border:1px solid white; border-collapse: collapse;">
+<table style="width:95%; border:1px solid white; border-collapse: collapse;">
     <tr>
-        <td style="width:30%; font-size:200%;">Outdoor</td>
+        <td style="width:30%; text-align:left;   font-size:5em;">Outdoor</td>
         <td style="width:30%; text-align:center; font-size:400%;"><span id="text_day"></span></td>
-        <td style="width:30%; text-align:right; font-size:200%;"Indoor</td>
+        <td style="width:30%; text-align:right;  font-size:200%;">Indoor</td>
     </tr>
     <tr>
-        <td style="width:30%; font-size:400%;"><span id="Outdoor_Temp"></span>F</td>
+        <td style="width:30%; text-align:left;   font-size:400%;"><span id="Outdoor_Temp"></span> F</td>
         <td style="width:30%; text-align:center; font-size:400%;"><span id="text_date"></span></td>
-        <td style="width:30%; text-align:right; font-size:400%;"><span id="Indoor_Temp"></span>F<br/> 
-            <span id="indoorRH"></span>%</td>
+        <td style="width:30%; text-align:right;  font-size:400%;"><span id="Indoor_Temp"></span> F</td>
     </tr>
     <tr>
         <td colspan="3" style="text-align:center; font-size:600%;"><span id="time"></span></td>
