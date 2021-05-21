@@ -1,146 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head><title>Home Temps</title>
-    <meta http-equiv="refresh" content="600">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        *, *:before, *:after {
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-        
+    <head>
+        <title>Home Temps</title>
+        <meta http-equiv="refresh" content="600">
+        <style type="text/css">        
         body { 
             background-color: black;
             padding: 20px 40px 80px;
             font-family: 'Merriweather Sans', sans-serif;
             color: ghostwhite;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
         }
-        
-        .Dashboard {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
+                
         .Widget {
             margin: 10px;
             box-shadow: 5px 5px 10px #333;
             text-align: center;
         }
 
-        .Widget-header {
-            padding: 10px 20px;
-        }
-
-        .Widget-headline {
-          margin: 0;
-        }
-        
         /* Weather Widget */
         .WeatherWidget {
-          display: flex;
-          flex-direction: column;
           width: 300px;
           height: 200px;
           background-color:rgb(0, 0, 50);
         }
 
         .WeatherWidget .Widget-header {
-          position: relative;
-          display: flex;
-          justify-content: flex-end;
-          overflow: hidden;
-          padding: 10px;
-        }
-
-        .WeatherWidget .Widget-body {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 1;
-          background: darken(#5CC8E5, 8%);
-          background-color:rgb(0, 0, 50);
-          padding: 20px;
-          font-weight: 300;
-          font-size: 7em;
-          vertical-align: top;
-        }
-        
-        .WeatherWidget .Widget-headline {
-          font-size: 3em;
-          z-index: 0;
-        }
-
-        .WeatherWidget .Conditions-Text {
-          flex: 1;
-          display: flex;
-          align-items: center;
-        }
-        
-        .WeatherWidget .Widget-f {
-          font-weight: 100;
-          font-size: 80px;
-          vertical-align: top;
-        }
-        
-        /* DateWidget Widget */
-        .DateWidget {
-          display: flex;
-          flex-direction: column;
-          width: 300px;
-          background-color:rgb(0, 0, 50);
-        }
-
-        .DateWidget .Widget-header {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .DateWidget .Widget-body {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .DateWidget .Widget-headline {
-          font-size: 4em;
-        }
-
-        .DateWidget .Widget-body {
-          flex: 1;
-          background-color:rgb(0, 0, 50);
-          padding: 20px;
-          font-weight: 300;
-          font-size: 7em;
-        }
-        
-        /* TimeWidget Widget */
-        .TimeWidget {
-          display: flex;
-          width: 700px;
-          height: 150px;
-          background-color:rgb(0, 0, 50);
-        }
-
-        .TimeWidget .Widget-header {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .TimeWidget .Widget-headline {
-            padding: 20px;
-            font-weight: 300;
-            font-size: 8em;
-        }
-        
+               
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -198,39 +83,20 @@
     </script>
 </head>
 <body>
-<div class="Dashboard">
-    <section class="Widget WeatherWidget">
-        <header class="Widget-header">
-            <h2 class="Widget-headline">Outdoor</h2>
-        </header>
-        <div class="Widget-body">
-            <span id="Outdoor_Temp"></span><span class="Widget-f">F</span>
-        </div>
-    </section>   
-    <section class="Widget DateWidget">
-        <header class="Widget-header">      
-            <h2 class="Widget-headline"><span id="text_day"></span></h2>
-        </header>
-        <div class="Widget-body">
-            <p><span id="text_date"></span></p>
-        </div>
-    </section>   
-    <section class="Widget WeatherWidget">
-        <header class="Widget-header">      
-            <h2 class="Widget-headline">Indoor</h2>
-        </header>
-        <div class="Widget-body">
-            <span id="Indoor_Temp"></span><span class="Widget-f">F</span>
-        </div>
-        <div class="Widget-body">
-            <span class="rh" id="indoorRH"></span><span class="Widget-f">%</span>
-        </div>
-    </section>
-    <section class="Widget TimeWidget">
-        <header class="Widget-header">      
-            <h2 class="Widget-headline"><span id="time"></span></h2>
-        </header>
-    </section>
-</div>
+<table>
+    <tr>
+        <td><h2 class="Widget-headline">Outdoor</h2></td>
+        <td><h2 class="Widget-headline"><span id="text_day"></span></h2></td>
+        <td><h2 class="Widget-headline">Indoor</h2></td>
+    </tr>
+    <tr>
+        <td><span id="Outdoor_Temp"></span><span class="Widget-f">F</span></td>
+        <td><span id="text_date"></span></td>
+        <td><span id="Indoor_Temp"></span><span class="Widget-f">F</span><span class="rh" id="indoorRH"></span><span class="Widget-f">%</span></td>
+    </tr>
+    <tr colspan="3">
+        <td><h2 class="Widget-headline"><span id="time"></span></h2></td>
+    </tr>
+</table>
 </body>
 </html>
