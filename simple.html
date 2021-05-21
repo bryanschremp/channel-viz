@@ -17,14 +17,11 @@
             text-align: center;
         }
 
-        /* Weather Widget */
         .WeatherWidget {
           width: 300px;
           height: 200px;
           background-color:rgb(0, 0, 50);
         }
-
-        .WeatherWidget .Widget-header {
                
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
@@ -83,19 +80,20 @@
     </script>
 </head>
 <body>
-<table>
+<table width="100%">
     <tr>
-        <td><h2 class="Widget-headline">Outdoor</h2></td>
-        <td><h2 class="Widget-headline"><span id="text_day"></span></h2></td>
-        <td><h2 class="Widget-headline">Indoor</h2></td>
+        <td width="33%"><h2>Outdoor</h2></td>
+        <td width="33%"><h2><span id="text_day"></span></h2></td>
+        <td width="33%"><h2>Indoor</h2></td>
     </tr>
     <tr>
-        <td><span id="Outdoor_Temp"></span><span class="Widget-f">F</span></td>
-        <td><span id="text_date"></span></td>
-        <td><span id="Indoor_Temp"></span><span class="Widget-f">F</span><span class="rh" id="indoorRH"></span><span class="Widget-f">%</span></td>
+        <td width="33%"><h1><span id="Outdoor_Temp"></span></h1><span class="Widget-f">F</span></td>
+        <td width="33%"><h1><span id="text_date"></span></h1></td>
+        <td width="33%"><h1><span id="Indoor_Temp"></span></h1><span class="Widget-f">F</span> <br/> 
+            <h1><span class="rh" id="indoorRH"></span></h1><span class="Widget-f">%</span></td>
     </tr>
     <tr colspan="3">
-        <td><h2 class="Widget-headline"><span id="time"></span></h2></td>
+        <td><h2><span id="time"></span></h2></td>
     </tr>
 </table>
 </body>
