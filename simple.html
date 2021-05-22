@@ -120,7 +120,7 @@
             $.ajax({
                 url: "https://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1&mkt=en-US",
                 dataType: "json",
-                success: function(data) { $('#image_url').html( "http://bing.com" + data.images[0].field3); }
+                success: function(data) { $('#image_url').html( "https://bing.com" + data.images[0].field3); }
             });
         }
         
