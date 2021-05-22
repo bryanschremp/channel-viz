@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Home Temps</title>
-        <meta http-equiv="refresh" content="60">
-        <style type="text/css">        
+<head>
+    <title>Home Temps</title>
+    <meta http-equiv="refresh" content="60">
+    <style type="text/css">        
         body { 
             background-color: black;
             font-family: 'Merriweather Sans', sans-serif;
             color: ghostwhite;
-            align-content: center;
         }
-                               
+        
+        #td_outdoor_lbl {
+            width:30%;
+            text-align:left;
+            font-size:2em;
+        }
+        
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -59,7 +64,7 @@
 <br/>
 <table style="width:100%; padding: 15px;">
     <tr>
-        <td style="width:30%; text-align:left;"><span style="font-size:2em;">Outdoor</span></td>
+        <td id="td_outdoor_lbl">Outdoor</td>
         <td style="width:30%; text-align:center;"></td>
         <td style="width:30%; text-align:right;"><span style="font-size:2em;">Indoor</span></td>
     </tr>
