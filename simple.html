@@ -89,15 +89,6 @@
             font-weight: 800;
         } 
         
-        .bgimg {
-            height: 100%;
-            position: relative;
-            opacity: 0.95;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -107,7 +98,6 @@
             getTemps();
             setInterval('updateClock()', 60000);
             setInterval('getTemps()', 120000);
-            GetJSON();
         });
         
         function getTemps() {
@@ -124,34 +114,7 @@
                 success: function(data) { $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4) + "&deg;"); }
             });
         }
-        
-        function updateWallpaper() {
-            $.ajax({
-                url: "https://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1&mkt=en-US",
-                dataType: "json",
-                success: function(data) { $('#image_url').html( "https://bing.com" + data.images[0].field3); }
-            });
-        }
-        
-        function GetImageURL(ans) {
-            var suffix = ans.images[0].url;
-            document.getElementById("background").style.backgroundImage = 'url("' + 'http://bing.com/' + suffix + '"';
-        }
-
-        function GetJSON() {
-            var xmlhttp = new XMLHttpRequest();
-            var url = "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
-
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    var ans = JSON.parse(this.responseText);
-                    GetImageURL(ans);
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-        }
-        
+                
         function updateClock() {
             var dt = new Date();
             var currentHours = dt.getHours();
@@ -189,6 +152,5 @@
         <td id="td_time_data" colspan="3"><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
 </table>
-<div class="bgimg" id="background">
 </body>
 </html>
