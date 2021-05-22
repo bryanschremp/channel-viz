@@ -10,26 +10,31 @@
             color: ghostwhite;
         }
         
+        #table_content {
+            width: 100%;
+            padding: 15px;
+        }
+        
         #td_outdoor_lbl {
-            width: 30%;
+            width: 33%;
             text-align: left;
             font-size: 2em;
         }
         
         #td_day_lbl {
-            width: 30%;
+            width: 33%;
             text-align: center;
             font-size: 2em;
         }    
             
         #td_indoor_lbl {
-            width: 30%; 
+            width: 33%; 
             text-align: right;
             font-size: 2em;
         }
         
         #td_outdoor_data {
-            width: 30%;
+            width: 33%;
             background-color: rgb(11, 2, 63);
             padding: 15px;
             text-align: left;
@@ -41,6 +46,40 @@
         
         #unit_f_lbl {
             font-size: 3em;   
+        }
+        
+        #td_indoor_data {
+            width: 33%;
+            background-color: rgb(11, 2, 63);
+            padding: 15px;
+            text-align: right;
+        }
+        
+        #Indoor_Temp {
+            font-size: 9em;
+        }
+        
+        #td_date_data {
+            width: 33%;
+            text-align: center;
+        }
+        
+        #text_day {
+            font-size: 5em;
+        }
+        
+        #text_day {
+            font-size: 5em;
+        }
+        
+        #td_time_data {
+            background-color: rgb(11, 2, 63);
+            padding: 15px;
+            text-align: center;
+        }
+        
+        #time {
+            font-size: 12em;
         }
         
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
@@ -89,7 +128,7 @@
 </head>
 <body>
 <br/>
-<table style="width:100%; padding: 15px;">
+<table id="table_content">
     <tr>
         <td id="td_outdoor_lbl">Outdoor</td>
         <td id="td_day_lbl"></td>
@@ -97,11 +136,11 @@
     </tr>
     <tr>
         <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><span id="unit_f_lbl">F</span></td>
-        <td style="width:30%; text-align:center;"><span style="font-size:5em;" id="text_day"></span><br/><span style="font-size:5em;" id="text_date"></span></td>
-        <td style="width:30%; background-color:rgb(11, 2, 63); padding:15px; text-align:right;"><span style="font-size:9em;" id="Indoor_Temp"></span><span id="unit_f_lbl">F</span></td>
+        <td id="td_date_data"><span id="text_day"></span><br/><span id="text_date"></span></td>
+        <td id="td_indoor_data"><span id="Indoor_Temp"></span><span id="unit_f_lbl">F</span></td>
     </tr>
     <tr>
-        <td colspan="3" style="background-color:rgb(11, 2, 63); padding:15px; text-align:center;"><br/><span style="font-size:12em;" id="time"></span></td>
+        <td id="td_time_data" colspan="3"><br/><span id="time"></span></td>
     </tr>
 </table>
 </body>
