@@ -13,12 +13,13 @@
         #table_content {
             width: 100%;
             padding: 15px;
+            border-spacing: 10px;
         }
         
         #td_outdoor_lbl {
             width: 33%;
             text-align: left;
-            font-size: 2em;
+            font-size: 4em;
         }
         
         #td_day_lbl {
@@ -30,7 +31,7 @@
         #td_indoor_lbl {
             width: 33%; 
             text-align: right;
-            font-size: 2em;
+            font-size: 4em;
         }
         
         #td_outdoor_data {
@@ -44,11 +45,19 @@
             font-size: 8em;
             font-weight: 800;
         }
-        
-        #unit_f_lbl {
-            font-size: 3em;   
+ 
+        #td_indoor_data {
+            width: 33%;
+            background-color: rgb(11, 2, 63);
+            padding: 10px;
+            text-align: right;
         }
-            
+        
+        #Indoor_Temp {
+            font-size: 8em;
+            font-weight: 800;
+        }
+        
         #td_date_data {
             width: 33%;
             text-align: center;
@@ -61,18 +70,6 @@
         #text_date {
             font-size: 5em;
         }
-        
-        #td_indoor_data {
-            width: 33%;
-            background-color: rgb(11, 2, 63);
-            padding: 10px;
-            text-align: right;
-        }
-        
-        #Indoor_Temp {
-            font-size: 8em;
-            font-weight: 800;
-        }
 
         #td_time_data {
             background-color: rgb(11, 2, 63);
@@ -81,12 +78,12 @@
         }
         
         #time {
-            font-size: 12em;
+            font-size: 14em;
             font-weight: 800;
         }
         
         #timeOfDay {
-            font-size: 7em;
+            font-size: 6em;
             font-weight: 800;
         }    
         
@@ -126,7 +123,7 @@
             currentHours = (currentHours == 0) ? 12 : currentHours; // Convert an hours component of "0" to "12".
             var currentTimeString = currentHours + ":" + currentMinutes;
             $( '#time' ).html(currentTimeString + " ");
-            $( '#timeOfDay' ).html(" " + timeOfDay);
+            $( '#timeOfDay' ).html(timeOfDay);
             
             var d = new Date();
             var days = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
@@ -145,8 +142,8 @@
         <td id="td_indoor_lbl">Indoor</td>
     </tr>
     <tr>
-        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><span id="unit_f_lbl">F</span></td>
-        <td id="td_indoor_data"><span id="Indoor_Temp"></span><span id="unit_f_lbl">F</span></td>
+        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span></td>
+        <td id="td_indoor_data"><span id="Indoor_Temp"></span></td>
     </tr>
     <tr>
         <td id="td_time_data" colspan="3"><br/><span id="time"></span><span id="timeOfDay"></span></td>
