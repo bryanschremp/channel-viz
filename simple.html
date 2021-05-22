@@ -157,9 +157,10 @@
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();        
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes; // Pad the minutes and seconds with leading zeros.
+            var timeOfDay = (currentHours < 12) ? "AM" : "PM";
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours; // Convert the hours component to 12-hour format.
             currentHours = (currentHours == 0) ? 12 : currentHours; // Convert an hours component of "0" to "12".
-            var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+            
             var currentTimeString = currentHours + ":" + currentMinutes;
             $( '#time' ).html(currentTimeString + " ");
             $( '#timeOfDay' ).html(timeOfDay);
