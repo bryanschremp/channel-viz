@@ -86,7 +86,7 @@
         }
         
         #timeOfDay {
-            font-size: 8em;
+            font-size: 7em;
             font-weight: 800;
         }    
         
@@ -126,10 +126,10 @@
             currentHours = (currentHours == 0) ? 12 : currentHours; // Convert an hours component of "0" to "12".
             var currentTimeString = currentHours + ":" + currentMinutes;
             $( '#time' ).html(currentTimeString);
-            $( '#timeOfDay' ).html(timeOfDay);
+            $( '#timeOfDay' ).html(" " + timeOfDay);
             
             var d = new Date();
-            var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            var days = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
             $( '#text_day' ).html(days[d.getDay()]);
             var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
             $( '#text_date' ).html(currentDateString);
@@ -141,12 +141,11 @@
 <table id="table_content">
     <tr>
         <td id="td_outdoor_lbl">Outdoor</td>
-        <td id="td_day_lbl"></td>
+        <td id="td_date_data" rowspan="2"><span id="text_day"></span><br/><span id="text_date"></span></td>
         <td id="td_indoor_lbl">Indoor</td>
     </tr>
     <tr>
         <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><span id="unit_f_lbl">F</span></td>
-        <td id="td_date_data"><span id="text_day"></span><br/><span id="text_date"></span></td>
         <td id="td_indoor_data"><span id="Indoor_Temp"></span><span id="unit_f_lbl">F</span></td>
     </tr>
     <tr>
