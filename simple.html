@@ -105,14 +105,14 @@
              $.ajax({
                  url: "https://api.thingspeak.com/channels/33195/feeds.json?results=2",
                 dataType: "json",
-                success: function(data) { $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4)); }
+                success: function(data) { $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4) + "&deg;"); }
                     // $('#indoorRH').html(data.feeds[0].field2.substr(0, 2));
             });
                        
             $.ajax({
                 url: "https://api.thingspeak.com/channels/21626/fields/1.json?results=1",
                 dataType: "json",
-                success: function(data) { $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4)); }
+                success: function(data) { $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4) + "&deg;"); }
             });
         }
 
@@ -125,7 +125,7 @@
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours; // Convert the hours component to 12-hour format.
             currentHours = (currentHours == 0) ? 12 : currentHours; // Convert an hours component of "0" to "12".
             var currentTimeString = currentHours + ":" + currentMinutes;
-            $( '#time' ).html(currentTimeString);
+            $( '#time' ).html(currentTimeString + " ");
             $( '#timeOfDay' ).html(" " + timeOfDay);
             
             var d = new Date();
@@ -149,7 +149,7 @@
         <td id="td_indoor_data"><span id="Indoor_Temp"></span><span id="unit_f_lbl">F</span></td>
     </tr>
     <tr>
-        <td id="td_time_data" colspan="3"><br/><span id="time"></span> <span id="timeOfDay"></span></td>
+        <td id="td_time_data" colspan="3"><br/><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
 </table>
 </body>
