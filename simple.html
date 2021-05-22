@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Home Temps</title>
-        <meta http-equiv="refresh" content="600">
+        <meta http-equiv="refresh" content="60">
         <style type="text/css">        
         body { 
             background-color: black;
@@ -26,21 +26,14 @@
              $.ajax({
                  url: "https://api.thingspeak.com/channels/33195/feeds.json?results=2",
                 dataType: "json",
-                success: function(data) {
-                    // console.log(data.feeds[0].field3);
-                    // console.log(data.feeds[0].field2);
-                    $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4));
+                success: function(data) { $('#Indoor_Temp').html(data.feeds[0].field3.substr(0, 4)); }
                     // $('#indoorRH').html(data.feeds[0].field2.substr(0, 2));
-                }
             });
                        
             $.ajax({
                 url: "https://api.thingspeak.com/channels/21626/fields/1.json?results=1",
                 dataType: "json",
-                success: function(data) {
-                    // console.log(data.feeds[0].field1);
-                    $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4));
-                }
+                success: function(data) { $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4)); }
             });
         }
 
