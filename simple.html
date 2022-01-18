@@ -97,8 +97,8 @@
                  url: "https://api.thingspeak.com/channels/33195/fields/1/last.json",
                 dataType: "json",
                 success: function(data) {
-                    console.log(data.feeds[0].field1);
-                    $('#Indoor_Temp').html(data.feeds[0].field1.substr(0, 4) + "&deg;");
+                    console.log(data.field1);
+                    $('#Indoor_Temp').html(data.field1.substr(0, 4) + "&deg;");
                 }
             });
                        
@@ -106,8 +106,8 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    console.log(data.feeds[0].field2);
-                    $('#Outdoor_Temp').html(data.feeds[0].field2.substr(0, 4) + "&deg;"); }
+                    console.log(data.field2);
+                    $('#Outdoor_Temp').html(data.field2.substr(0, 4) + "&deg;"); }
             });
         }
                 
