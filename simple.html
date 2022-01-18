@@ -99,17 +99,15 @@
                 success: function(data) {
                     console.log(data.feeds[0].field1);
                     $('#Indoor_Temp').html(data.feeds[0].field1.substr(0, 4) + "&deg;");
-                    // console.log(data.feeds[0].field2);
-                    // $('#Outdoor_Temp').html(data.feeds[0].field2.substr(0, 4) + "&deg;");
                 }
             });
                        
             $.ajax({
-                url: "https://api.thingspeak.com/channels/33195/fields/2.json?results=2",
+                url: "https://api.thingspeak.com/channels/33195/fields/1.json?results=2",
                 dataType: "json",
                 success: function(data) { 
-                    console.log(data.feeds[0].field1);
-                    $('#Outdoor_Temp').html(data.feeds[0].field1.substr(0, 4) + "&deg;"); }
+                    console.log(data.feeds[0].field2);
+                    $('#Outdoor_Temp').html(data.feeds[0].field2.substr(0, 4) + "&deg;"); }
             });
         }
                 
