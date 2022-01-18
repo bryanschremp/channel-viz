@@ -97,7 +97,9 @@
                  url: "https://api.thingspeak.com/channels/33195/feeds.json?results=2",
                 dataType: "json",
                 success: function(data) {
+                    Console.log(data.feeds[0].field1);
                     $('#Indoor_Temp').html(data.feeds[0].field1.substr(0, 4) + "&deg;");
+                    Console.log(data.feeds[0].field2);
                     $('#Outdoor_Temp').html(data.feeds[0].field2.substr(0, 4) + "&deg;");
                 }
             });
