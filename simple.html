@@ -82,7 +82,9 @@
         } 
 
         #td_garage_data {
-            text-align: center;
+            text-align: left;
+            font-size: 3em;
+            font-weight: 600;
         }
         
         #Garage_Temp {
@@ -123,7 +125,7 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/4/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    console.log(data.field4);
+                    // console.log(data.field4);
                     $('#Garage_Temp').html(data.field4.substr(0, 4) + "&deg;"); }
             });
         }
@@ -165,7 +167,7 @@
         <td id="td_time_data" colspan="3"><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
     <tr>
-        <td id="td_garage_data" colspan="3"><span id="Garage_Temp"></span></td>
+        <td id="td_garage_data" colspan="3">Garage: <span id="Garage_Temp"></span></td>
     </tr>
 </table>
 </body>
