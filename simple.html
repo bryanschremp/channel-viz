@@ -94,7 +94,7 @@
         
         function getTemps() {
              $.ajax({
-                 url: "https://api.thingspeak.com/channels/33195/fields/1.json?results=2",
+                 url: "https://api.thingspeak.com/channels/33195/fields/1/last.json",
                 dataType: "json",
                 success: function(data) {
                     console.log(data.feeds[0].field1);
@@ -103,7 +103,7 @@
             });
                        
             $.ajax({
-                url: "https://api.thingspeak.com/channels/33195/fields/1.json?results=2",
+                url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
                 dataType: "json",
                 success: function(data) { 
                     console.log(data.feeds[0].field2);
