@@ -80,6 +80,11 @@
             font-size: 3em;
             font-weight: 600;
         } 
+ 
+        #Garage_Temp {
+            font-size: 3em;
+            font-weight: 600;
+        }
         
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
@@ -97,7 +102,7 @@
                  url: "https://api.thingspeak.com/channels/33195/fields/1/last.json",
                 dataType: "json",
                 success: function(data) {
-                    console.log(data.field1);
+                    // console.log(data.field1);
                     $('#Indoor_Temp').html(data.field1.substr(0, 4) + "&deg;");
                 }
             });
@@ -106,8 +111,16 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    console.log(data.field2);
+                    // console.log(data.field2);
                     $('#Outdoor_Temp').html(data.field2.substr(0, 4) + "&deg;"); }
+            });
+            
+            $.ajax({
+                url: "https://api.thingspeak.com/channels/33195/fields/4/last.json",
+                dataType: "json",
+                success: function(data) { 
+                    console.log(data.field4);
+                    $('#Outdoor_Temp').html(data.field4.substr(0, 4) + "&deg;"); }
             });
         }
                 
@@ -146,6 +159,9 @@
     </tr>
     <tr>
         <td id="td_time_data" colspan="3"><span id="time"></span><span id="timeOfDay"></span></td>
+    </tr>
+    <tr>
+        <td id="td_garage_data" colspan="3"><span id="Garage_Temp"></span></td>
     </tr>
 </table>
 </body>
