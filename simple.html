@@ -80,7 +80,11 @@
             font-size: 3em;
             font-weight: 600;
         } 
- 
+
+        #td_garage_data {
+            text-align: center;
+        }
+        
         #Garage_Temp {
             font-size: 3em;
             font-weight: 600;
@@ -120,7 +124,7 @@
                 dataType: "json",
                 success: function(data) { 
                     console.log(data.field4);
-                    $('#Outdoor_Temp').html(data.field4.substr(0, 4) + "&deg;"); }
+                    $('#Garage_Temp').html(data.field4.substr(0, 4) + "&deg;"); }
             });
         }
                 
