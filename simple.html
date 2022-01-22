@@ -9,89 +9,71 @@
             font-family: 'Merriweather Sans', sans-serif;
             color: white;
         }
-        
         #table_content {
             width: 100%;
         }
-        
         #td_outdoor_lbl {
             width: 33%;
             text-align: left;
             font-size: 2em;
         }
-        
         #td_day_lbl {
             width: 33%;
             text-align: center;
             font-size: 2em;
         }    
-            
         #td_indoor_lbl {
             width: 33%; 
             text-align: right;
             font-size: 2em;
         }
-        
         #td_outdoor_data {
             width: 33%;
             text-align: left;
         }
-        
         #Outdoor_Temp {
             font-size: 7em;
             font-weight: 600;
         }
- 
-        #td_indoor_data {
+       #td_indoor_data {
             width: 33%;
             text-align: right;
         }
-        
         #Indoor_Temp {
             font-size: 7em;
             font-weight: 600;
         }
-        
         #td_date_data {
             width: 33%;
             text-align: center;
         }
-        
         #text_day {
             font-size: 4em;
         }
-        
         #text_date {
             font-size: 4em;
         }
-
         #td_time_data {
             text-align: center;
         }
-        
         #time {
             font-size: 13em;
             font-weight: 500;
         }
-        
         #timeOfDay {
             font-size: 3em;
             font-weight: 600;
         } 
-
         #td_garage_data {
             text-align: left;
         }
-        
         #garage_lbl {
             font-size: 2em;    
         }
-        
         #Garage_Temp {
             font-size: 3em;
             font-weight: 600;
         }
-        
         @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -102,53 +84,43 @@
             setInterval('updateClock()', 60000);
             setInterval('getTemps()', 120000);
         });
-        
         function getTemps() {
              $.ajax({
                  url: "https://api.thingspeak.com/channels/33195/fields/1/last.json",
                 dataType: "json",
                 success: function(data) {
-                    // console.log(data.field1);
                     $('#Indoor_Temp').html(Math.round(data.field1) + "&deg;");
                 }
             });
-                       
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    // console.log(data.field2);
-                    $('#Outdoor_Temp').html(data.field2.substr(0, 4) + "&deg;"); }
+                    $('#Outdoor_Temp').html(Math.round(data.field2) + "&deg;"); }
             });
-            
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/4/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    // console.log(data.field4);
-                    $('#Garage_Temp').html(data.field4.substr(0, 4) + "&deg;"); }
+                    $('#Garage_Temp').html(Math.round(data.field4) + "&deg;");}
             });
         }
-                
         function updateClock() {
             var dt = new Date();
             var currentHours = dt.getHours();
             var currentMinutes = dt.getMinutes();        
-            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes; // Pad the minutes and seconds with leading zeros.
+            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
-            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours; // Convert the hours component to 12-hour format.
-            currentHours = (currentHours == 0) ? 12 : currentHours; // Convert an hours component of "0" to "12".
-            
-            var currentTimeString = currentHours + ":" + currentMinutes;
-            $( '#time' ).html(currentTimeString + " ");
-            $( '#timeOfDay' ).html(timeOfDay);
-            
+            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+            currentHours = (currentHours == 0) ? 12 : currentHours;
+            var currentTimeString=currentHours+":"+currentMinutes;
+            $('#time').html(currentTimeString+" ");
+            $('#timeOfDay').html(timeOfDay);
             var d = new Date();
             var days = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
-            $( '#text_day' ).html(days[d.getDay()]);
-            
-            var currentDateString = (dt.getMonth()+1) + "/" + dt.getDate();
-            $( '#text_date' ).html(currentDateString);
+            $('#text_day').html(days[d.getDay()]);
+            var currentDateString = (dt.getMonth()+1)+"/"+dt.getDate();
+            $('#text_date').html(currentDateString);
         }
     </script>
 </head>
@@ -170,5 +142,4 @@
         <td id="td_garage_data" colspan="3"><span id="garage_lbl">Garage:&nbsp</span><span id="Garage_Temp"></span></td>
     </tr>
 </table>
-</body>
-</html>
+</body></html>
