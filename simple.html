@@ -109,7 +109,7 @@
                 dataType: "json",
                 success: function(data) {
                     // console.log(data.field1);
-                    $('#Indoor_Temp').html(data.field1.substr(0, 4) + "&deg;");
+                    $('#Indoor_Temp').html(Math.round(data.field1) + "&deg;");
                 }
             });
                        
