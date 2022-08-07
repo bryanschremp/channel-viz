@@ -101,7 +101,7 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/6/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#GrowTub_Hum').html(Math.round(data.field6));}
+                    $('#GrowTub_Hum').html(Math.round(data.field6) + "%");}
             });
         }
         function updateClock() {
