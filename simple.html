@@ -83,6 +83,18 @@
                 success: function(data) { 
                     $('#Garage_Temp').html(Math.round(data.field4) + "&deg;");}
             });
+            $.ajax({
+                url: "https://api.thingspeak.com/channels/33195/fields/5/last.json",
+                dataType: "json",
+                success: function(data) { 
+                    $('#GrowTub_Temp').html(Math.round(data.field5) + "&deg;");}
+            });
+            $.ajax({
+                url: "https://api.thingspeak.com/channels/33195/fields/6/last.json",
+                dataType: "json",
+                success: function(data) { 
+                    $('#GrowTub_Hum').html(Math.round(data.field6));}
+            });
         }
         function updateClock() {
             var dt = new Date();
@@ -118,7 +130,8 @@
         <td id="td_time_data" colspan="3"><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
     <tr>
-        <td id="td_garage_data" colspan="3"><span id="garage_lbl">Garage:&nbsp</span><span id="Garage_Temp"></span></td>
+        <td id="td_garage_data" colspan="3"><span id="garage_lbl">Garage:&nbsp</span><span id="Garage_Temp"></span>,
+        <span id="growtub_lbl">Grow Tub:&nbsp</span><span id="GrowTub_Temp"></span>, <span id="GrowTub_Hum"></span>%</td>
     </tr>
 </table>
 </body></html>
