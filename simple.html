@@ -74,7 +74,7 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/7/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#GrowTub_CO2').html(data.field7 + "ppm");}
+                    $('#GrowTub_CO2').html(data.field7);}
             });
         }
         function updateClock() {
@@ -112,7 +112,7 @@
     </tr>
     <tr>
         <td id="td_garage_data" colspan="1"><span id="garage_lbl">Garage:&nbsp</span><span id="Garage_Temp"></span></td>
-        <td id=td_growtub_data colspan="2"><span id="growtub_lbl"></span><span id="GrowTub_Temp"></span> Hum:<span id="GrowTub_Hum"></span> CO2:<span id="GrowTub_CO2"></span></td>
+        <td id=td_growtub_data colspan="2"><span id="growtub_lbl"></span><span id="GrowTub_Temp"></span> Hum:<span id="GrowTub_Hum"></span> CO2 PPM:<span id="GrowTub_CO2"></span></td>
     </tr>
 </table>
 </body></html>
