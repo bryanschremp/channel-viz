@@ -5,16 +5,16 @@
     <meta http-equiv="refresh" content="600">
     <style type="text/css">        
         body { background-color: black; font-family: 'Merriweather Sans', sans-serif; color: white; }
-        table, th, td, tr { padding: 0px; border: 1px solid #ffffff; }
+        table, th, td, tr { padding: 0px; border: 0px solid #ffffff; }
         #table_content { width: 100%; }
         #td_outdoor_lbl { width: 33%; text-align: left; font-size: 2; }
         #td_day_lbl { width: 33%; text-align: center; font-size: 2em; }
         #td_indoor_lbl { width: 33%; text-align: right; font-size: 2; }
         #td_outdoor_data { width: 33%; text-align: left; }
-        #Outdoor_Temp { font-size: 7em; font-weight: 600; }
+        #Outdoor_Temp { font-size: 7em; font-weight: 600; vertical-align: top}
         #Outdoor_rh { font-size: 2em; }
         #Outdoor_baro { font-size: 2em; }
-        #td_indoor_data { width: 33%; text-align: right; }
+        #td_indoor_data { width: 33%; text-align: right; vertical-align: top}
         #Indoor_Temp { font-size: 7em; font-weight: 600; }
         #td_date_data { width: 33%; text-align: center; }
         #text_day { font-size: 4em; }
@@ -118,14 +118,14 @@
         <td id="td_indoor_lbl">Indoor</td>
     </tr>
     <tr>
-        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><br/>RH:<span id="Outdoor_rh"></span> Baro:<span id="Outdoor_baro"></span>inHg</td>
+        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><br/>RH:<span id="Outdoor_rh"></span> &nbsp Baro:<span id="Outdoor_baro"></span>inHg</td>
         <td id="td_indoor_data"><span id="Indoor_Temp"></span></td>
     </tr>
     <tr>
         <td id="td_time_data" colspan="4"><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
     <tr>
-        <td id="td_garage_data" colspan="1"><span id="garage_lbl">Garage:&nbsp</span><span id="Garage_Temp"></span></td>
+        <td id="td_garage_data" colspan="1"><span id="garage_lbl">Garage:</span><span id="Garage_Temp"></span></td>
         <td id=td_growtub_data colspan="2"><span id="growtub_lbl"></span><span id="GrowTub_Temp"></span> Hum:<span id="GrowTub_Hum"></span> CO2:<span id="GrowTub_CO2"></span></td>
     </tr>
 </table>
