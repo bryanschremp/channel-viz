@@ -5,7 +5,7 @@
     <meta http-equiv="refresh" content="600">
     <style type="text/css">        
         body { background-color: black; font-family: 'Merriweather Sans', sans-serif; color: white; }
-        table, th, td, tr { padding: 0px; border: 0px solid #ffffff; }
+        table, th, td, tr { padding: 0px; border: 1px solid #ffffff; }
         #table_content { width: 100%; }
         #td_outdoor_lbl { width: 33%; text-align: left; font-size: 2em; }
         #td_day_lbl { width: 33%; text-align: center; font-size: 2em; }
@@ -58,13 +58,13 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/3/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#Outdoor_rh').html(data.field2 + "%"); }
+                    $('#Outdoor_rh').html(data.field3 + "%"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/8/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#Outdoor_baro').html(data.field2); }
+                    $('#Outdoor_baro').html(data.field8); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/4/last.json",
@@ -118,11 +118,11 @@
         <td id="td_indoor_lbl">Indoor</td>
     </tr>
     <tr>
-        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><table width="350"><tr><td>RH: <span id="Outdoor_rh">75%</span></td><td>Baro:<span id="Outdoor_baro">29.51</span>inHg</td></tr></table></td>
+        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span><br/>RH:<span id="Outdoor_rh"></span> Baro:<span id="Outdoor_baro"></span>inHg</td>
         <td id="td_indoor_data"><span id="Indoor_Temp"></span></td>
     </tr>
     <tr>
-        <td id="td_time_data" colspan="3"><span id="time"></span><span id="timeOfDay"></span></td>
+        <td id="td_time_data" colspan="4"><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
     <tr>
         <td id="td_garage_data" colspan="1"><span id="garage_lbl">Garage:&nbsp</span><span id="Garage_Temp"></span></td>
