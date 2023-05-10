@@ -45,8 +45,7 @@
                  url: "https://api.thingspeak.com/channels/33195/fields/1/last.json",
                 dataType: "json",
                 success: function(data) {
-                    $('#Indoor_Temp').html(data.field1 + "&deg;");
-                }
+                    $('#Indoor_Temp').html(data.field1 + "&deg;"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
@@ -70,25 +69,25 @@
                 url: "https://api.thingspeak.com/channels/33195/fields/4/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#Garage_Temp').html(data.field4 + "&deg;");}
+                    $('#Garage_Temp').html(data.field4 + "&deg;"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/5/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#GrowTub_Temp').html(data.field5 + "&deg;");}
+                    $('#GrowTub_Temp').html(data.field5 + "&deg;"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/6/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#GrowTub_Hum').html(data.field6 + "%");}
+                    $('#GrowTub_Hum').html(data.field6 + "%"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/7/last.json",
                 dataType: "json",
                 success: function(data) { 
-                    $('#GrowTub_CO2').html(data.field7);}
+                    $('#GrowTub_CO2').html(data.field7); }
             });
         }
         function updateClock() {
