@@ -82,7 +82,7 @@
     </script>
     <style type="text/css">
         body { background-color: black; font-family: 'Merriweather Sans', sans-serif; color: white; }
-        table, th, td, tr { padding: 0px; border: 0px solid #ffffff; }
+        table, th, td, tr { padding: 0px; border: 0px solid #ffffff; border-collapse: collapse; }
         #table_content { width: 100%; }
         #td_outdoor_lbl { width: 33%; text-align: left; font-size: 2; }
         #td_day_lbl { width: 33%; text-align: center; font-size: 2em; }
@@ -93,7 +93,6 @@
         #Outdoor_baro { font-size: 4em; text-align: right; }
         #td_indoor_data { width: 33%; text-align: right; }
         #Indoor_Temp { font-size: 7em; font-weight: 600; }
-        #td_date_data { width: 33%; text-align: center; }
         #text_day { font-size: 4em; }
         #text_date { font-size: 4em; }
         #td_time_data { text-align: center; }
@@ -114,12 +113,12 @@
 <table id="table_content">
     <tr>
         <td id="td_outdoor_lbl">Outdoor</td>
-        <td id="td_date_data"></td>
+        <td>Humidity</td>
         <td id="td_indoor_lbl">Indoor</td>
     </tr>
     <tr>
         <td id="td_outdoor_data"><span id="Outdoor_Temp"></span></td>
-        <td>Humidity<br/><span id="Outdoor_rh"></span></br>Press:<br/><span id="Outdoor_baro"></span></td>
+        <td><span id="Outdoor_rh"></span></br>Press:<br/><span id="Outdoor_baro"></span></td>
         <td id="td_indoor_data"><span id="Indoor_Temp"></span></td>
     </tr>
     <tr>
