@@ -3,35 +3,6 @@
 <head>
     <title>Home Temps</title>
     <meta http-equiv="refresh" content="600">
-    <style type="text/css">        
-        body { background-color: black; font-family: 'Merriweather Sans', sans-serif; color: white; }
-        table, th, td, tr { padding: 0px; border: 0px solid #ffffff; }
-        #table_content { width: 100%; }
-        #td_outdoor_lbl { width: 40%; text-align: left; font-size: 2; }
-        #td_day_lbl { width: 30%; text-align: center; font-size: 2em; }
-        #td_indoor_lbl { width: 30%; text-align: right; font-size: 2; }
-        #td_outdoor_data { width: 33%; text-align: left; }
-        #Outdoor_Temp { font-size: 7em; font-weight: 600; vertical-align: top}
-        #Outdoor_rh { font-size: 3em; text-align: right}
-        #Outdoor_baro { font-size: 3em; text-align: right}
-        #td_indoor_data { width: 33%; text-align: right; vertical-align: top}
-        #Indoor_Temp { font-size: 7em; font-weight: 600; }
-        #td_date_data { width: 33%; text-align: center; }
-        #text_day { font-size: 4em; }
-        #text_date { font-size: 4em; }
-        #td_time_data { text-align: center; }
-        #time { font-size: 10em; font-weight: 600; }
-        #timeOfDay { font-size: 3em; font-weight: 600; } 
-        #td_garage_data { text-align: left; }
-        #garage_lbl { font-size: 3em; }
-        #Garage_Temp { font-size: 4em; font-weight: 600; }
-        #td_growtub_data { text-align: right;}
-        #growtub_lbl { font-size: 3em; }
-        #GrowTub_Temp { font-size: 4em; font-weight: 600; }
-        #GrowTub_Hum { font-size: 4em; font-weight: 600; }
-        #GrowTub_CO2 { font-size: 4em; font-weight: 600; }
-        @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -51,50 +22,50 @@
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#Outdoor_Temp').html(data.field2 + "&deg;"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/3/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#Outdoor_rh').html(data.field3 + "%"); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/8/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#Outdoor_baro').html(data.field8); }
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/4/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#Garage_Temp').html(data.field4 + "&deg;");}
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/5/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#GrowTub_Temp').html(data.field5 + "&deg;");}
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/6/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#GrowTub_Hum').html(data.field6 + "%");}
             });
             $.ajax({
                 url: "https://api.thingspeak.com/channels/33195/fields/7/last.json",
                 dataType: "json",
-                success: function(data) { 
+                success: function(data) {
                     $('#GrowTub_CO2').html(data.field7);}
             });
         }
         function updateClock() {
             var dt = new Date();
             var currentHours = dt.getHours();
-            var currentMinutes = dt.getMinutes();        
+            var currentMinutes = dt.getMinutes();
             currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
             var timeOfDay = (currentHours < 12) ? "AM" : "PM";
             currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
@@ -109,20 +80,51 @@
             $('#text_date').html(currentDateString);
         }
     </script>
+    <style type="text/css">
+        body { background-color: black; font-family: 'Merriweather Sans', sans-serif; color: white; }
+        table, th, td, tr { padding: 0px; border: 1px solid #ffffff; }
+        #table_content { width: 100%; }
+        #td_outdoor_lbl { width: 33%; text-align: left; font-size: 2; }
+        #td_day_lbl { width: 33%; text-align: center; font-size: 2em; }
+        #td_indoor_lbl { width: 33%; text-align: right; font-size: 2; }
+        #td_outdoor_data { width: 33%; text-align: left; }
+        #Outdoor_Temp { font-size: 7em; font-weight: 600; }
+        #Outdoor_rh { font-size: 4em; text-align: right; }
+        #Outdoor_baro { font-size: 4em; text-align: right; }
+        #td_indoor_data { width: 33%; text-align: right; }
+        #Indoor_Temp { font-size: 7em; font-weight: 600; }
+        #td_date_data { width: 33%; text-align: center; }
+        #text_day { font-size: 4em; }
+        #text_date { font-size: 4em; }
+        #td_time_data { text-align: center; }
+        #time { font-size: 10em; font-weight: 600; }
+        #timeOfDay { font-size: 3em; font-weight: 600; }
+        #td_garage_data { text-align: left; }
+        #garage_lbl { font-size: 3em; }
+        #Garage_Temp { font-size: 4em; font-weight: 600; }
+        #td_growtub_data { text-align: right; }
+        #growtub_lbl { font-size: 3em; }
+        #GrowTub_Temp { font-size: 4em; font-weight: 600; }
+        #GrowTub_Hum { font-size: 4em; font-weight: 600; }
+        #GrowTub_CO2 { font-size: 4em; font-weight: 600; }
+        @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700);
+    </style>
 </head>
 <body>
 <table id="table_content">
     <tr>
         <td id="td_outdoor_lbl">Outdoor</td>
-        <td id="td_date_data" rowspan="2"><span id="text_day"></span><br/><span id="text_date"></span></td>
+        <td id="td_date_data"></td>
         <td id="td_indoor_lbl">Indoor</td>
     </tr>
     <tr>
-        <td id="td_outdoor_data"><table><tr><td><span id="Outdoor_Temp"></span></td><td>Humidity:&nbsp<span id="Outdoor_rh"></span></br>Press:&nbsp<span id="Outdoor_baro"></span></td></tr></table></td>
+        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span></td>
+        <td>Humidity<br/><span id="Outdoor_rh"></span></br>Press:<br/><span id="Outdoor_baro"></span></td>
         <td id="td_indoor_data"><span id="Indoor_Temp"></span></td>
     </tr>
     <tr>
-        <td id="td_time_data" colspan="4"><span id="time"></span><span id="timeOfDay"></span></td>
+        <td id="td_time_data"><span id="text_day"></span><br/><span id="text_date"></span></td>
+        <td id="td_time_data" colspan="2"><span id="time"></span><span id="timeOfDay"></span></td>
     </tr>
     <tr>
         <td id="td_garage_data" colspan="1"><span id="garage_lbl">Garage:</span><span id="Garage_Temp"></span></td>
