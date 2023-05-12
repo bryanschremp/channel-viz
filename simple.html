@@ -84,19 +84,6 @@
         body { background-color: black; font-family: 'Merriweather Sans', sans-serif; color: white; }
         table, th, td, tr { padding: 0px; border: 0px solid #ffffff; border-collapse: collapse; }
         #table_content { width: 100%; }
-        #td_outdoor_lbl { width: 33%; text-align: left; font-size: 2; }
-        #td_day_lbl { width: 33%; text-align: center; font-size: 2em; }
-        #td_indoor_lbl { width: 33%; text-align: right; font-size: 2; }
-        #td_outdoor_data { width: 33%; text-align: left; }
-        #Outdoor_Temp { font-size: 7em; font-weight: 600; }
-        #Outdoor_rh { font-size: 4em; text-align: right; }
-        #Outdoor_baro { font-size: 4em; text-align: right; }
-        #td_indoor_data { width: 33%; text-align: right; }
-        #Indoor_Temp { font-size: 7em; font-weight: 600; }
-        #text_day { font-size: 4em; }
-        #text_date { font-size: 4em; }
-        #td_time_data { text-align: center; }
-        #time { font-size: 10em; font-weight: 600; }
         #timeOfDay { font-size: 3em; font-weight: 600; }
         #td_garage_data { text-align: left; }
         #garage_lbl { font-size: 3em; }
@@ -112,21 +99,21 @@
 <body>
 <table id="table_content">
     <tr>
-        <td id="td_outdoor_lbl">Outdoor</td>
-        <td>Humidity</td>
-        <td id="td_indoor_lbl">Indoor</td>
+        <td style="width: 33%; text-align: left; font-size: 2;">Outdoor</td>
+        <td style="width: 33%; text-align: left; font-size: 2;">Humidity</td>
+        <td style="width: 33%; text-align: right; font-size: 2;">Indoor</td>
     </tr>
     <tr>
-        <td id="td_outdoor_data"><span id="Outdoor_Temp"></span></td>
-        <td><span id="Outdoor_rh"></span></br>Press:<br/><span id="Outdoor_baro"></span></td>
-        <td id="td_indoor_data"><span id="Indoor_Temp"></span></td>
+        <td id="td_outdoor_data" style="width: 33%; text-align: left;"><span id="Outdoor_Temp" style="font-size: 7em; font-weight: 600;"></span></td>
+        <td><span id="Outdoor_rh" style="font-size: 4em;"></span></br>Pressure<br/><span id="Outdoor_baro" style="font-size: 4em;"></span>inHg</td>
+        <td id="td_indoor_data" style="width: 33%; text-align: right;"><span id="Indoor_Temp" style="font-size: 7em; font-weight: 600;"></span></td>
     </tr>
     <tr>
-        <td id="td_time_data"><span id="text_day"></span><br/><span id="text_date"></span></td>
-        <td id="td_time_data" colspan="2"><span id="time"></span><span id="timeOfDay"></span></td>
+        <td id="td_time_data" style="text-align: center;"><span id="text_day" style="font-size: 4em;"></span><br/><span id="text_date" style="font-size: 4em;"></span></td>
+        <td id="td_time_data" style="text-align: center;" colspan="2"><span id="time" style="font-size: 10em; font-weight: 600;"></span><span id="timeOfDay"></span></td>
     </tr>
     <tr>
-        <td id="td_garage_data" colspan="1"><span id="garage_lbl">Garage:</span><span id="Garage_Temp"></span></td>
+        <td id="td_garage_data" colspan="1"><span style="font-size: 2em;">Garage: &nbsp;</span><span id="Garage_Temp"></span></td>
         <td id=td_growtub_data colspan="2"><span id="growtub_lbl"></span><span id="GrowTub_Temp"></span> Hum:<span id="GrowTub_Hum"></span> CO2:<span id="GrowTub_CO2"></span></td>
     </tr>
 </table>
