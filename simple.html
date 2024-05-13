@@ -20,19 +20,19 @@
                 }
             });
             $.ajax({
-                url: "https://api.thingspeak.com/channels/33195/fields/2/last.json",
+                url: "https://api.thingspeak.com/channels/2546695/fields/1/last.json",
                 dataType: "json",
                 success: function(data) {
                     $('#Outdoor_Temp').html(data.field2 + "&deg;"); }
             });
             $.ajax({
-                url: "https://api.thingspeak.com/channels/33195/fields/3/last.json",
+                url: "https://api.thingspeak.com/channels/2546695/fields/2/last.json",
                 dataType: "json",
                 success: function(data) {
                     $('#Outdoor_rh').html(data.field3 + "%"); }
             });
             $.ajax({
-                url: "https://api.thingspeak.com/channels/33195/fields/8/last.json",
+                url: "https://api.thingspeak.com/channels/2546695/fields/3/last.json",
                 dataType: "json",
                 success: function(data) {
                     $('#Outdoor_baro').html(data.field8); }
